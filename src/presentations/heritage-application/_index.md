@@ -315,4 +315,4 @@ Chaque compte sera traité comme son type dynamique (Compte ou CompteRemunere).
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

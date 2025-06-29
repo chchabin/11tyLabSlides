@@ -379,4 +379,4 @@ if( ! isset( $_SESSION["nom"] )
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

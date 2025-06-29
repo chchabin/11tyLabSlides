@@ -341,4 +341,4 @@ L'appel se fait de la façon suivante :
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

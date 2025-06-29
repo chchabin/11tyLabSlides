@@ -474,4 +474,4 @@ PRINT @NomTrouve;
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

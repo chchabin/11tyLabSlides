@@ -170,4 +170,4 @@ Des environnements plus lourds peuvent faire des tests de performance ou de char
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

@@ -143,4 +143,4 @@ public class EnsembleTableau : Ensemble
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

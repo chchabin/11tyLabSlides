@@ -174,4 +174,4 @@ Le modificateur override est nécessaire pour étendre ou modifier l’implémen
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

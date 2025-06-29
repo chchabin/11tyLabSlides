@@ -246,4 +246,4 @@ Ce ne peut être utilisé dans le cas de deux applications « hétérogènes �
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

@@ -306,4 +306,4 @@ On crée la troisième copie sur un dispositif de stockage sur bande depuis la p
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

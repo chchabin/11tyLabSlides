@@ -133,4 +133,4 @@ mitigate : atténuer
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

@@ -130,4 +130,4 @@ La création du nouveau projet peut se faire soit :
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

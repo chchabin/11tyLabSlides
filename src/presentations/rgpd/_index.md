@@ -430,4 +430,4 @@ navigate down to learn more
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

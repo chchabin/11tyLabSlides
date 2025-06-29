@@ -164,4 +164,4 @@ Le résultat apparait sous forme de tableau
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

@@ -245,4 +245,4 @@ DROP ROLE gestionnaire;
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

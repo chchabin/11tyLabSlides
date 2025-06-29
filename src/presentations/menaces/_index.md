@@ -228,7 +228,7 @@ erte de confiance des partenaires, des fournisseurs, des clients ou usagers de l
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})
 
 
 

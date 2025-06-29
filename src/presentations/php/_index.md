@@ -310,4 +310,4 @@ Les tableaux et les objets sont explorés récursivement, avec des indentations,
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

@@ -436,4 +436,4 @@ using (var context = new VotreDbContext())
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

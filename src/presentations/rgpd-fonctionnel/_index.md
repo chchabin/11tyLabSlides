@@ -168,4 +168,4 @@ Il est toujours tentant de placer autant de champs que le designer le souhaite, 
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})

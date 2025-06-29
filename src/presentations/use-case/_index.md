@@ -189,6 +189,6 @@ Un cas d’utilisation est une fonctionnalité attendue du logiciel
 
 # ↩️
 
-#### [Start over](/index)                               
+#### [Start over]({{ "/index" | url }})                               
                                                                       
 

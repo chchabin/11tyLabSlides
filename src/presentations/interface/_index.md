@@ -271,4 +271,4 @@ public class Oiseau : Animal, IVolant
 
 # ↩️
 
-#### [Start over](/index)
+#### [Start over]({{ "/index" | url }})
