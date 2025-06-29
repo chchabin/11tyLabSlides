@@ -1,0 +1,23 @@
+{
+  "name": "11tylabslides",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "eleventy --serve",
+    "watch": "npx @11ty/eleventy --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "reveal.js": "^5.1.0"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-mermaid": "^0.2.5"
+  }
+}

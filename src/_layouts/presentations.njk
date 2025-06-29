@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/reveal.js/reveal.css">
+    <link rel="stylesheet" href="/reveal.js/theme/black.css">
+    <link rel="stylesheet" href="/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section></section>
+        {%- for slide in content | splitSlides -%}
+            <section>{{ slide | safe }}</section>
+        {%- endfor -%}
+    </div>
+</div>
+<script src="/reveal.js/reveal.js"></script>
+<script src="/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="/reveal.js/plugin/notes/notes.js"></script>
+<script>
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+        // Options de configuration personnalisées
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+    });
+</script>
+</body>
+</html>

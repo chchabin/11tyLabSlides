@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Eleventy output
+public/
+_site/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local environment files
+.env
+.env.*
+
+# Mac OS files
+.DS_Store
+
+# VSCode or other IDE config
+.vscode/
+.idea/
+
+# System files
+Thumbs.db
+
+# Eleventy cache (si utilisé)
+.eleventy.js.cache/
+.cache/
+
+# Optional: lock files (si tu ne veux pas les versionner)
+# package-lock.json
+# yarn.lock

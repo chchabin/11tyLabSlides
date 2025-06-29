@@ -1,0 +1,12 @@
+{% extends "base.njk" %}
+
+{% block content %}
+    <div class="reveal">
+        <div class="slides">
+
+            {%- for slide in content | splitSlides -%}
+                <section>{{ slide | safe }}</section>
+            {%- endfor -%}
+        </div>
+    </div>
+{% endblock %}
