@@ -35,11 +35,13 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setLibrary("md", md);
 
     return {
+        pathPrefix: process.env.NODE_ENV === 'production' ? "/11tyLabSlides/" : "",
         dir: {
             input: 'src',
             output: '_site',
             includes: '_layouts',
             layouts: '_layouts'
         }
+
     };
 };

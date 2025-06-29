@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx @11ty/eleventy",
+    "build:prod": "NODE_ENV=production npx @11ty/eleventy",
     "start": "eleventy --serve",
     "watch": "npx @11ty/eleventy --watch"
   },
