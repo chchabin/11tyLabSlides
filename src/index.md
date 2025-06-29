@@ -6,36 +6,40 @@ draft: false
 ---
 # Liste des sujets
 
-- [Généralités](/presentations/menaces/_index)
-- [RGPD](/presentations/rgpd/_index)
-- {% link "/presentations/rgpd/_index", "RGPD" %}
-- [RGPD - rôle des entreprises](/presentations/rgpd-fonctionnel/_index)
-- [Récit utilisateur](/presentations/user-story/_index)
-- [Sauvegardes](/presentations/sauvegardes/_index)
+- {% link "/presentations/class/_index", "Révision des Classes" %}
+- {% link "/presentations/use-case/_index", "Cas d'utilisation et tests fonctionnels" %}
+- {% link "/presentations/test-unitaire/_index", "Test Unitaire" %}
+- {% link "/presentations/testU-vs/_index", "Test Unitaire avec VS" %}
+- {% link "/presentations/heritage-cours/_index", "Héritage Cours" %}
+- {% link "/presentations/heritage-application/_index", "Héritage Application" %}
+- {% link "/presentations/abstract/_index", "Classe Abstraite" %}
+- {% link "/presentations/interface/_index", "Classe Interface" %}
 
 ---
 ## Programmation
 
-- [PHP Introduction](/presentations/php/_index)
-- [PHP Formulaires](/presentations/formulaires/_index)
-- [Révision des Class](/presentations/class/_index)
-- [Création d'un DLL avec VS](/presentations/dll/_index)
-- [Cas d'utilisation et tests fonctionnels](/presentations/use-case/_index)
+- {% link "/presentations/serialization/_index", "Sérialisation avec C#" %}
+- {% link "/presentations/entity/_index", "Linq to Entity" %}
+- {% link "/presentations/serialization/_index", "Sérialisation" %}
+- {% link "/presentations/gbd-droits/_index", "gestion des droits" %}
+- {% link "/presentations/sgbd-transactions/_index", "les transactions" %}
+- {% link "/presentations/serialization/_index", "Sérialisation" %}
+- {% link "/presentations/domjs/_index", "Dom & js" %}
+- {% link "/presentations/dll/_index", "Création d'un DLL avec VS" %}
 
 ---
 
-- [Test Unitaire](/presentations/test-unitaire/_index)
-- [Test Unitaire avec VS](/presentations/testU-vs/_index)
-- [Sérialisation avec C#](/presentations/serialization/_index)
-- [Héritage](/presentations/heritage-application/_index)
-- [Héritage Cours](/presentations/heritage-cours/_index)
-- [Linq to Entity](/presentations/entity/_index)
-- [Classe Abstraite](/presentations/abstract/_index)
-- [Classe Interface](/presentations/interface/_index)
+## Programmation
+- {% link "/presentations/php/_index", "PHP Introduction" %}
+- {% link "/presentations/formulaires/_index", "PHP Formulaires" %}
 
 ---
 
-- [gestion des droits](/presentations/sgbd-droits/_index)
-- [les transactions](/presentations/sgbd-transactions/_index)
-- [Dom & js](/presentations/domjs/_index)
+## Sécurité
+
+- {% link "/presentations/menaces/_index", "Généralités" %}
+- {% link "/presentations/rgpd/_index", "RGPD" %}
+- {% link "/presentations/rgpd-fonctionnel/_index", "RGPD - rôle des entreprises" %}
+- {% link "/presentations/user-story/_index", "Récit utilisateur" %}
+- {% link "/presentations/sauvegardes/_index", "Sauvegardes" %}
 
