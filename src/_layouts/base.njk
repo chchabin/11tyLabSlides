@@ -8,11 +8,11 @@
     {{ content | safe }}
 {% endblock %}
 
-<script src="/reveal.js/reveal.js"></script>
-<script src="/reveal.js/plugin/markdown/markdown.js"></script>
-<script src="/reveal.js/plugin/highlight/highlight.js"></script>
-<script src="/reveal.js/plugin/notes/notes.js"></script>
-<!-- Remplacez votre script actuel par celui-ci -->
+<script src="{{ '/reveal.js/reveal.js' | url }}"></script>
+<script src="{{ '/reveal.js/plugin/markdown/markdown.js' | url }}"></script>
+<script src="{{ '/reveal.js/plugin/highlight/highlight.js' | url }}"></script>
+<script src="{{ '/reveal.js/plugin/notes/notes.js' | url }}"></script>
+<!-- CDN externe - pas de changement nécessaire -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
     // Configuration simple
