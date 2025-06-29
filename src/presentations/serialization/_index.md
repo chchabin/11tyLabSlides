@@ -30,14 +30,14 @@ Pour enregistrer des données, on disposait traditionnellement :
 ## La sérialisation
 Avec la programmation objet, un nouveau mécanisme est utilisé, la sérialisation.  
 Elle permet de sauvegarder dans un fichier différents objets valorisés.
-![serialization](/images/serialization/serialization01.png)
+![serialization]({{"/images/serialization/serialization01.png" | url }})
 
 
 ---
 
 ## La désérialisation
 C’est l’opération contraire
-![deserialization](/images/serialization/deserialization.png)
+![deserialization]({{"/images/serialization/deserialization.png" | url }})
 
 ---
 

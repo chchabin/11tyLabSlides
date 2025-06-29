@@ -3,6 +3,9 @@ const markdownIt = require("markdown-it");
 
 
 module.exports = function(eleventyConfig) {
+    // Définition globale du pathPrefix
+    const pathPrefix = process.env.NODE_ENV === 'production' ? "/11tyLabSlides" : "";
+
     eleventyConfig.addPassthroughCopy('src/images');
     // Copiez les fichiers statiques de Reveal.js
     eleventyConfig.addPassthroughCopy({
@@ -26,8 +29,12 @@ module.exports = function(eleventyConfig) {
     // gestion des url dans le fichier index - VERSION CORRIGÉE
     eleventyConfig.addShortcode("link", function(url, text) {
         // Version simple qui fonctionne avec le pathPrefix
-        const pathPrefix = process.env.NODE_ENV === 'production' ? "/11tyLabSlides" : "";
         return `<a href="${pathPrefix}${url}">${text}</a>`;
+    });
+
+    // Filtre pour transformer les URLs (utile pour les liens d'images en markdown)
+    eleventyConfig.addFilter("url", function(url) {
+        return `${pathPrefix}${url}`;
     });
 
     const options = {
@@ -41,7 +48,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.setLibrary("md", md);
 
     return {
-        pathPrefix: process.env.NODE_ENV === 'production' ? "/11tyLabSlides/" : "",
+        pathPrefix: pathPrefix,
         dir: {
             input: 'src',
             output: '_site',

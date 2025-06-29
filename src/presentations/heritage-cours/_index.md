@@ -54,7 +54,7 @@ La classe dont les membres sont hérités s’appelle la classe de base. La clas
 
 ---
 
-![heritage01](/images/heritage/heritageDetail.png)
+![heritage01]({{"/images/heritage/heritageDetail.png" | url }}
 
 ---
 

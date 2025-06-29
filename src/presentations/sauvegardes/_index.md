@@ -195,7 +195,7 @@ La sauvegarde (Backup, en anglais) consiste à dupliquer des données stockées 
 
 ---
 
- ![sauvegardes](/images/sauvegarde/sauvegardes.png)
+ ![sauvegardes]({{"/images/sauvegarde/sauvegardes.png" | url }}
 
 ---
 

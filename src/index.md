@@ -16,7 +16,7 @@ draft: false
 - {% link "/presentations/interface/_index", "Classe Interface" %}
 
 ---
-## Programmation
+## Partie 2
 
 - {% link "/presentations/serialization/_index", "Sérialisation avec C#" %}
 - {% link "/presentations/entity/_index", "Linq to Entity" %}

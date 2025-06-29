@@ -21,7 +21,7 @@ draft: false
 ---
 
 ## La dette technique
-![dettetech](/images/class/dettetech.png)
+![dettetech]({{"/images/class/dettetech.png" | url }}
 
 ---
 
@@ -88,7 +88,7 @@ Il se compose d'informations et d'actions. Les actions utilisent (et parfois mod
 
 Pour créer des objets ayant le même 👍patron👍, je crée une classe. Tous les objets seront créés à partir de cette classe.
 
-![patrons](/images/class/patron.png)
+![patrons]({{"/images/class/patron.png" | url }}
 
 ---
 
@@ -101,7 +101,7 @@ Une classe spécifie les informations et les actions qu'auront en commun tous le
 
 |  Voici la représentation réalisée par Visual Studio  | Voici la même classe représentée sous la forme d'un diagramme conforme au standard UML. |
 |:----------------------------------------------------:|:---------------------------------------------------------------------------------------:|
-|   ![classVs](/images/class/classVs.png)   |                     ![](/images/class/classUml.png)                     |
+|   ![classVs]({{"/images/class/classVs.png" | url }}   |                     ![]({{"/images/class/classUml.png" | url }}                     |
 
 ---
 
