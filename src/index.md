@@ -8,6 +8,7 @@ draft: false
 
 - [Généralités](/presentations/menaces/_index)
 - [RGPD](/presentations/rgpd/_index)
+- {% link "/presentations/rgpd/_index", "RGPD" %}
 - [RGPD - rôle des entreprises](/presentations/rgpd-fonctionnel/_index)
 - [Récit utilisateur](/presentations/user-story/_index)
 - [Sauvegardes](/presentations/sauvegardes/_index)

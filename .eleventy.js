@@ -23,6 +23,11 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addCollection("presentations", function(collectionApi) {
         return collectionApi.getFilteredByGlob("src/presentations/**/*.md");
     });
+    // gestion des url dans le fichier index
+    eleventyConfig.addShortcode("link", function(url, text) {
+        // Utilisation de la fonction url d'Eleventy
+        return `<a href="${this.eleventy.url(url)}">${text}</a>`;
+    });
 
     const options = {
         html: true,
