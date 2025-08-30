@@ -25,14 +25,14 @@ draft: false
 
 ## Création d'un projet de test
 Ajoutez un projet de test unitaire
-![test Unitaire]({{"/images/test-unitaire/testUnitaire01.png" | url }}
+![test Unitaire]({{"/images/test-unitaire/testUnitaire01.png" | url }})
 
 
 ---
 
 ## Ajouter une référence au projet
 Dans ce nouveau projet
-![référence test Unitaire]({{"/images/test-unitaire/testUnitaire02.png" | url }}
+![référence test Unitaire]({{"/images/test-unitaire/testUnitaire02.png" | url }})
 
 
 ---
@@ -40,14 +40,14 @@ Dans ce nouveau projet
 ## Créez une class de test  
    En haut du fichier, ajoutez l'instruction <mark>using</mark> avec le nom de la référence du projet, par exemple  
    <mark>using Banque;</mark> ou autre :  
-   ![dll09]({{"/images/test-unitaire/dll09.png" | url }}
+   ![dll09]({{"/images/test-unitaire/dll09.png" | url}})
 
 ---
 
 ## Les attributs
 Pour identifier les tests il est nécessaire de déclarer des attributs, comme `[TestClass()]` ou `[TestMethod]`, pour la classe et pour la méthode. 
 La déclaration minimale est :  
-![testUnitaire06]({{"/images/test-unitaire/testUnitaire06.png" | url }}
+![testUnitaire06]({{"/images/test-unitaire/testUnitaire06.png" | url }})
 
 ---
 
@@ -143,21 +143,21 @@ Dans la pratique, on se sert beaucoup de <mark>Assert.AreEqual</mark>, ou <mark>
 ## Ajout d'un nouveau test :
 1. faire un click droit sur le projet de test unitaire et <mark>Ajouter</mark>
 2. choisir <mark>Test unitaire</mark>
-   ![ajouter test Unitaire]({{"/images/test-unitaire/testUnitaire03.png" | url }}   
+   ![ajouter test Unitaire]({{"/images/test-unitaire/testUnitaire03.png" | url }})  
 
 
 --- 
 
 ## Execution des tests
 Faire un click droit sur le projet et <mark>Exécuter les tests</mark>
-![testUnitaire04]({{"/images/test-unitaire/testUnitaire04.png" | url }}
+![testUnitaire04]({{"/images/test-unitaire/testUnitaire04.png" | url }})
 
 
 --- 
 
 ## Résultat du Test
 Le résultat apparait sous forme de tableau
-![testUnitaire05]({{"/images/test-unitaire/testUnitaire05.png" | url }}
+![testUnitaire05]({{"/images/test-unitaire/testUnitaire05.png" | url }})
 
 
 ---

@@ -123,7 +123,7 @@ Exemple : Le Taxi
 
 ---
 
-![abuse]({{"/images/user-story/abuse.png" | url }}
+![abuse]({{"/images/user-story/abuse.png" | url }})
 <div class="font">
 threaten : menacer -  
 mitigate : atténuer

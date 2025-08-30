@@ -107,7 +107,7 @@ Ce sont des testeurs qui doivent posséder plusieurs compétences :
 ## Quand définir les tests ?
 La définition des tests est parallèle à la réalisation du projet.  
 Par exemple lorsque l’on définit un cas d’utilisation, on définit les tests à réaliser :
-![test01]({{"/images/test-unitaire/test01.png" | url }}
+![test01]({{"/images/test-unitaire/test01.png" | url }})
 
 
 ---

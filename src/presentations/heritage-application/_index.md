@@ -46,11 +46,11 @@ classDiagram
 ---
 
 ## Création d'une relation d’héritage entre les deux classes
-![heritage01]({{"/images/heritage/heritage01.png" | url }}
+![heritage01]({{"/images/heritage/heritage01.png" | url }})
 
 ---
 
-![heritage01]({{"/images/heritage/heritageDetail.png" | url }}
+![heritage01]({{"/images/heritage/heritageDetail.png" | url }})
 
 ---
 
@@ -121,7 +121,7 @@ Console.WriteLine(c.ToString());
 
 
 Ne retourne pas les informations du compte rémunéré :  
-![]({{"/images/heritage/override01.png" | url }}
+![]({{"/images/heritage/override01.png" | url }})
 
 ---
 

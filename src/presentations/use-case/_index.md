@@ -61,7 +61,7 @@ Un cas d’utilisation est une fonctionnalité attendue du logiciel
 
 ## Un exemple : cas Lafleur
 
-![useCaseLafleur]({{"/images/use-case/useCaseLafleur.png" | url }}
+![useCaseLafleur]({{"/images/use-case/useCaseLafleur.png" | url }})
 
 ---
 
