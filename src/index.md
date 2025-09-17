@@ -18,6 +18,7 @@ draft: false
 ---
 ## Partie 2
 
+- {% link "/presentations/static/_index", "Utilisation de static dans les classes" %}
 - {% link "/presentations/serialization/_index", "Sérialisation avec C#" %}
 - {% link "/presentations/entity/_index", "Linq to Entity" %}
 - {% link "/presentations/serialization/_index", "Sérialisation" %}
@@ -25,11 +26,12 @@ draft: false
 - {% link "/presentations/sgbd-transactions/_index", "les transactions" %}
 - {% link "/presentations/serialization/_index", "Sérialisation" %}
 - {% link "/presentations/domjs/_index", "Dom & js" %}
-- {% link "/presentations/dll/_index", "Création d'un DLL avec VS" %}
 
 ---
 
 ## Programmation
+
+- {% link "/presentations/dll/_index", "Création d'un DLL avec VS" %}
 - {% link "/presentations/php/_index", "PHP Introduction" %}
 - {% link "/presentations/formulaires/_index", "PHP Formulaires" %}
 
