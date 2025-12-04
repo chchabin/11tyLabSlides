@@ -312,7 +312,6 @@ GO
 
 # Les procédures stockées
 
-
 ---
 <div class="size">
 Il s’agit d’une série d’instructions SQL permettant d’automatiser un ensemble d’actions.
@@ -340,40 +339,14 @@ Dans une architecture 3 Tiers (Client, serveur de traitement de données) :
 
 ---
 
-## Syntaxe d’une procédure stockée
-```sql
-CREATE PROCEDURE insertemp 
-    @v_np INT,
-    @v_nomp NVARCHAR(14)
-AS
-BEGIN
-    INSERT INTO pilote (npilote, nompilote)
-    VALUES (@v_np, @v_nomp);
-END;
-GO
-```
----
-
-## Appel
-```sql
-EXEC insertemp @v_np = 1, @v_nomp = 'Jean Dupont';
-```
-ou
-```sql
-EXEC insertemp 1, 'Jean Dupont';
-```
-
----
 ## Syntaxe d’une procédure stockée (mysql)
 ```sql
-delimiter|
-create procedure insertemp (IN v_np integer,IN 
-v_nomp varchar(14)) 
-
-begin 
- insert into pilote(npilote, nompilote) 
- values (v_np, v_nomp); 
-end;
+DELIMITER //
+CREATE PROCEDURE GetEmployeCount(OUT total INT)
+BEGIN
+SELECT COUNT(*) INTO total FROM employees;
+END //
+DELIMITER ;
 ```
 ---
 
@@ -381,9 +354,9 @@ end;
 - Comme tout sous-programme, possibilité de passage de paramètre
 - Le corps de la procédure défini par le mot clé <mark>begin</mark> et finit par <mark>end ;</mark>
 - Dans le corps de la procédure, il peut y avoir des requêtes SQL et utiliser les paramètres de la procédure.
-- Avant la création, il faut changer de délimiteur : <mark>delimiter |</mark>.
+- Avant la création, il faut changer de délimiteur : <mark>delimiter //</mark>.
 - On termine la procédure par un délimiteur : <mark>|</mark>
-- Après le |, il faut revenir au délimiteur standard : <mark>delimiter ;</mark>
+- Après le //, il faut revenir au délimiteur standard : <mark>delimiter ;</mark>
 ---
 
 ## Quelques commandes
@@ -405,6 +378,26 @@ end;
 
 ---
 
+## Syntaxe d’une procédure stockée (sqlServer)
+```sql
+CREATE PROCEDURE GetEmployeCount
+    @Total INT OUTPUT
+AS
+BEGIN
+SELECT @Total = COUNT(*) FROM Employees;
+END
+```
+</section>
+
+---
+
+<section>
+
+# Le passage de paramètres
+
+
+---
+
 ## Le passage de paramètres
 
 Les différents types de passage de paramètres sont :
@@ -418,13 +411,20 @@ Les différents types de passage de paramètres sont :
 
 ## Exemple MYSQL
 ```sql
-delimiter|
-create procedure recherche_cli(IN numero int, OUT leNom varchar(20)) 
-begin 
-SELECT UPPER(nompilote) into leNom from 
- pilote WHERE npilote = numero;
-end; 
-| delimiter ;
+DELIMITER //
+
+CREATE PROCEDURE recherche_cli(
+    IN numero INT,
+    OUT leNom VARCHAR(50)
+)
+BEGIN
+SELECT UPPER(nompilote)
+INTO leNom
+FROM pilote
+WHERE npilote = numero;
+END //
+
+DELIMITER ;
 ```
 Appel
 ```sql
@@ -434,14 +434,14 @@ call recherche_cli (16, @nomPil);
 
 ## La difference pour sql Server
 
-1. Pas de mot-clé DELIMITER en SQL Server. Il est spécifique à MySQL.
-2. Les paramètres en sortie (OUT) sont définis avec le mot-clé OUTPUT dans SQL Server.
+1. Pas de mot-clé <mark>DELIMITER</mark> en SQL Server. Il est spécifique à MySQL.
+2. Les paramètres en sortie (OUT) sont définis avec le mot-clé <mark>OUTPUT</mark> dans SQL Server.
 3. SQL Server utilise la clause <mark>SELECT ... INTO</mark> uniquement pour créer une nouvelle table, pas pour affecter 
 une valeur à une variable. On doit utiliser <mark>SET</mark> ou une assignation directe à un paramètre <mark>OUTPUT</mark>.
 
 
 ---
-##  Exemple SQL Server
+##  Le même exemple pour SQL Server
 ```sql
 CREATE PROCEDURE recherche_cli
    @numero INT,
@@ -467,6 +467,114 @@ EXEC recherche_cli @numero = 1, @leNom = @NomTrouve OUTPUT;
 PRINT @NomTrouve;
 
 ```
+
+---
+
+## Le cas des variables locales
+
+---
+
+Dans MySQL, les variables locales doivent être déclarées avec DECLARE au début du bloc BEGIN/END. Elles sont typées et leur portée est limitée au bloc où elles sont déclarées.
+
+MySQL supporte aussi les variables utilisateur avec le préfixe @. Elles persistent pendant toute la session et n'ont pas besoin d'être déclarées.
+
+---
+
+## Exemple MYSQL
+```sql
+DELIMITER //
+CREATE PROCEDURE ExempleVariables()
+BEGIN
+    DECLARE nom VARCHAR(100);
+    DECLARE age INT DEFAULT 0;
+    DECLARE salaire DECIMAL(10,2);
+    DECLARE dateEmbauche DATE;
+     
+    SET @compteur = 0;
+    SET nom = 'Jean Dupont';
+    SET age = 30;
+    SET salaire = 45000.50;
+
+SELECT nom, age, salaire, @compteur;
+END //
+DELIMITER ;
+```
+
+---
+
+MySQL offre plusieurs façons d'affecter des valeurs aux variables :
+
+
+
+```sql
+DELIMITER //
+CREATE PROCEDURE AffectationValeurs()
+BEGIN
+    DECLARE total INT;
+    DECLARE nomClient VARCHAR(100);
+    
+    -- Méthode 1 : SET
+    SET total = 100;
+    
+    -- Méthode 2 : SELECT INTO
+SELECT COUNT(*) INTO total FROM employees;
+
+-- Méthode 3 : Avec plusieurs colonnes
+SELECT name, salary INTO nomClient, total
+FROM employees
+WHERE id = 1;
+END //
+DELIMITER ;
+```
+
+---
+
+En SQL Server, toutes les variables locales commencent par <mark>@</mark> et doivent être déclarées avec <mark>DECLARE</mark>. Elles peuvent être initialisées lors de la déclaration.
+
+---
+
+```sql
+CREATE PROCEDURE ExempleVariables
+AS
+BEGIN
+DECLARE @nom NVARCHAR(100);
+DECLARE @age INT = 0;  -- Initialisation directe
+DECLARE @salaire DECIMAL(10,2) = 45000.50;
+DECLARE @dateEmbauche DATE;
+
+    SET @nom = 'Jean Dupont';
+    SET @age = 30;
+    
+    SELECT @nom AS Nom, @age AS Age, @salaire AS Salaire;
+END
+```
+---
+
+SQL Server offre aussi plusieurs méthodes d'affectation :
+```sql
+CREATE PROCEDURE AffectationValeurs
+    AS
+BEGIN
+    DECLARE @total INT;
+    DECLARE @nomClient NVARCHAR(100);
+    DECLARE @salaire DECIMAL(10,2);
+    
+    -- Méthode 1 : SET (une seule valeur)
+    SET @total = 100;
+    
+    -- Méthode 2 : SELECT (peut assigner plusieurs valeurs)
+SELECT @total = COUNT(*) FROM Employees;
+
+-- Méthode 3 : Plusieurs colonnes en une requête
+SELECT @nomClient = Name, @salaire = Salary
+FROM Employees
+WHERE EmployeeID = 1;
+
+-- Méthode 4 : Avec calculs
+SELECT @total = SUM(Salary) FROM Employees WHERE Active = 1;
+END
+```
+
 
 </section>
 
