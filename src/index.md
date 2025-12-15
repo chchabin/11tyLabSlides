@@ -34,6 +34,7 @@ draft: false
 - {% link "/presentations/dll/_index", "Création d'un DLL avec VS" %}
 - {% link "/presentations/php/_index", "PHP Introduction" %}
 - {% link "/presentations/formulaires/_index", "PHP Formulaires" %}
+- {% link "/presentations/javascript-cours/_index", "Javascript cours" %}
 
 ---
 
