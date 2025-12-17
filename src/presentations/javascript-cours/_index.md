@@ -1386,3 +1386,9 @@ Implémenter une liste de tâches avec délégation d'événements pour optimise
 ES6 offre toutes les fonctionnalités que vous connaissez en PHP et C# : encapsulation, callbacks, architecture MVC et gestion d'événements. La principale différence réside dans la syntaxe et le modèle asynchrone natif de JavaScript.
 
 Continuez à pratiquer ces concepts pour maîtriser le développement JavaScript moderne !
+
+---
+
+# ↩️
+
+#### [Start over]({{ "/index" | url }})

@@ -35,6 +35,7 @@ draft: false
 - {% link "/presentations/php/_index", "PHP Introduction" %}
 - {% link "/presentations/formulaires/_index", "PHP Formulaires" %}
 - {% link "/presentations/javascript-cours/_index", "Javascript cours" %}
+- {% link "/presentations/ia-rag/_index", "RAG" %}
 
 ---
 
