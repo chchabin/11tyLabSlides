@@ -48,20 +48,25 @@ module.exports = function(eleventyConfig) {
 
     // Configurez markdown-it sans le plugin mermaid
     const md = markdownIt(options);
+// 🔒 Sauvegarde du renderer fence d’origine
+    const defaultFence = md.renderer.rules.fence;
 
-    md.renderer.rules.fence = (tokens, idx) => {
+// 👇 Surcharge propre
+    md.renderer.rules.fence = function (tokens, idx, options, env, self) {
         const token = tokens[idx];
         const info = token.info.trim();
 
+        // Mermaid
         if (info === 'mermaid') {
             return `<div class="mermaid">
 ${token.content}
 </div>`;
         }
 
-        return markdownIt().renderer.rules.fence
-            ? markdownIt().renderer.rules.fence(tokens, idx)
-            : `<pre><code>${md.utils.escapeHtml(token.content)}</code></pre>`;
+        // 🔁 Tous les autres blocs (js, php, bash, etc.)
+        return defaultFence
+            ? defaultFence(tokens, idx, options, env, self)
+            : self.renderToken(tokens, idx, options);
     };
 
     eleventyConfig.setLibrary("md", md);
