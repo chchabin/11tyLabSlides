@@ -11,6 +11,9 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({
         'node_modules/reveal.js/dist': 'reveal.js',
         'node_modules/reveal.js/plugin': 'reveal.js/plugin',
+        'src/assets':"icon",
+        'node_modules/reveal.js-mermaid-plugin/plugin/mermaid': 'reveal.js/plugin/mermaid',
+        'node_modules/mermaid/dist': 'reveal.js',
     });
 
     // Configuration pour les fichiers Markdown
@@ -45,6 +48,22 @@ module.exports = function(eleventyConfig) {
 
     // Configurez markdown-it sans le plugin mermaid
     const md = markdownIt(options);
+
+    md.renderer.rules.fence = (tokens, idx) => {
+        const token = tokens[idx];
+        const info = token.info.trim();
+
+        if (info === 'mermaid') {
+            return `<div class="mermaid">
+${token.content}
+</div>`;
+        }
+
+        return markdownIt().renderer.rules.fence
+            ? markdownIt().renderer.rules.fence(tokens, idx)
+            : `<pre><code>${md.utils.escapeHtml(token.content)}</code></pre>`;
+    };
+
     eleventyConfig.setLibrary("md", md);
 
     return {

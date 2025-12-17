@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "markdown-it": "^14.1.0",
-    "markdown-it-mermaid": "^0.2.5"
+    "markdown-it-mermaid": "^0.2.5",
+    "mermaid": "^11.12.2",
+    "reveal.js-mermaid-plugin": "^11.6.0"
   }
 }
