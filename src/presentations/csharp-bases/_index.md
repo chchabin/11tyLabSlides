@@ -29,25 +29,25 @@ draft: false
 
 ---
 
-## LES TYPES
+### LES TYPES
 
 <div class="size" >
 
-| Type    | Description                              | Taille    | Exemple de syntaxe     |
-|---------|------------------------------------------|-----------|------------------------|
-| bool    | Valeur logique (vrai ou faux).           | 1 octet   | bool isReady = true;   |
-| char    | Un seul caractère Unicode.               | 2 octets  | char grade = 'A';      |
-| string  | Une séquence de caractères (texte).      | Variable  | string name = "Azure"; |
-| int     | Nombre entier (sans virgule).            | 4 octets  | int count = 10;        |
-| double  | Nombre à virgule (double précision).     | 8 octets  | double pi = 3.14159;   |
-| float   | Nombre à virgule (simple précision).     | 4 octets  | float price = 10.99f;  |
+| Type    | Description                              | Taille    | Exemple de syntaxe       |
+|---------|------------------------------------------|-----------|--------------------------|
+| bool    | Valeur logique (vrai ou faux).           | 1 octet   | bool isReady = true;     |
+| char    | Un seul caractère Unicode.               | 2 octets  | char grade = 'A';        |
+| string  | Une séquence de caractères (texte).      | Variable  | string name = "Azure";   |
+| int     | Nombre entier (sans virgule).            | 4 octets  | int count = 10;          |
+| double  | Nombre à virgule (double précision).     | 8 octets  | double pi = 3.14159;     |
+| float   | Nombre à virgule (simple précision).     | 4 octets  | float price = 10.99f;    |
 | decimal | Haute précision (monétaire / financier). | 16 octets | decimal total = 100.50m; |
 
 </div>
 
 ---
 
-## LES CARACTÈRES SPÉCIAUX
+### LES CARACTÈRES SPÉCIAUX
 
 | type | Description                                                |
 |------|------------------------------------------------------------|
@@ -58,7 +58,7 @@ draft: false
 
 ---
 
-## les opérateurs de calcul
+### les opérateurs de calcul
 
 **Exemple d’utilisation :**
 ```csharp
@@ -79,7 +79,7 @@ int g = a + b/c; //g = 14
 
 ---
 
-## Les opérateurs d’affectation combinés
+### Les opérateurs d’affectation combinés
 
 Exemple d’utilisation :
 ```csharp
@@ -102,7 +102,7 @@ i--; // i -= 1; // i = i – 1;
 
 ---
 
-## Concatenation
+### Concatenation
 
 ```csharp
 string a = "Coucou,";
@@ -122,7 +122,7 @@ string d = $"Vous avez entré : {a}{b}";//Interpolation de chaine $
 
 ---
 
-## La notion de condition
+### La notion de condition
 
 <div class="size" >
 
@@ -142,7 +142,7 @@ string d = $"Vous avez entré : {a}{b}";//Interpolation de chaine $
 
 ---
 
-## L’instruction `if`
+### L’instruction `if`
 
 ```csharp
 string a ="";
@@ -161,7 +161,7 @@ Console.WriteLine(a);
 
 ---
 
-## L’instruction `switch`
+### L’instruction `switch`
 ```csharp
 //Saisie de la variable country
 string a ="";
@@ -191,7 +191,7 @@ Console.WriteLine(a);
 ## Les Tableaux
 
 ---
-## Déclaration
+### Déclaration
 
 
 ```csharp
@@ -223,7 +223,7 @@ tableaudechaine[6]="coucou" ; // Là je pense que vous avez compris !?
 ## Les Boucles
 ---
 
-## La boucle for
+### La boucle for
 ```csharp
 string a ="";
 for (int i = 0; i < 10; i++) 
@@ -235,7 +235,7 @@ Console.WriteLine(a);
 ```
 ---
 
-## La boucle while
+### La boucle while
 ```csharp
 const int fin = 5; // ceci est une constante, mot clé const
 int somme = 0;   // variable de cumul
@@ -256,7 +256,7 @@ Console.WriteLine("La somme vaut :" + somme);
 
 ---
 
-## Composition des fonctions
+### Composition des fonctions
 
 <div class="size" >
 
@@ -277,7 +277,7 @@ Console.WriteLine("La somme vaut :" + somme);
 <mark>Corps :</mark> le code à exécuter entre accolades
 
 ---
-## Exemple
+### Exemple
 ```csharp
 class Program
 {
@@ -296,6 +296,47 @@ public static int CalculerPrix(int quantite, double prixUnitaire)
     }
 }
 ```
+---
+
+### Signature de fonction
+
+L’utilisateur d’une fonction n’a pas à connaitre le programme de la fonction ; seule la signature de la fonction le concerne.
+
+ ---
+### Les composants
+
+1. Le nom de la fonction : Son identifiant.
+
+2. Le nombre de paramètres : Combien de valeurs elle reçoit.
+
+3. Le type des paramètres : Si c'est un int, un string, etc.
+
+4. L'ordre des paramètres : L'ordre compte ! (int, string) est différent de (string, int).
+
+5. Les modificateurs de passage : (En C#) comme ref ou out.
+
+---
+
+### Ce qui n'en fait PAS partie
+C'est une erreur classique de débutant : le type de retour (ce que la fonction renvoie) et les noms des paramètres ne font généralement pas partie de la signature pour le compilateur.
+
+---
+
+### Exemple
+```csharp
+CalculerPrix(int , double )
+```
+est la signature de la fonction
+
+---
+## On peut aussi la presenter sous forme de tableau
+<div class="size" >
+
+| Nom          | Rôle                                                                                                                  | Paramètres                                                                                                | Valeur de retour                         |
+|--------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------|
+| CalculerPrix | Calcule le montant total d'une commande en multipliant la quantité par le prix, puis convertit le résultat en entier. | <mark>int quantite :</mark> Le nombre d'articles<br/><mark>double prixUnitaire :</mark> Le prix à l'unité | <mark>int :</mark> Le prix total arrondi |
+
+</div>
 </section>
 
 ---
