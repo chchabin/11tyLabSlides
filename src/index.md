@@ -31,6 +31,7 @@ draft: false
 
 ## Programmation
 
+- {% link "/presentations/csharp-bases/_index", "C# Aide mémoire" %}
 - {% link "/presentations/dll/_index", "Création d'un DLL avec VS" %}
 - {% link "/presentations/php/_index", "PHP Introduction" %}
 - {% link "/presentations/formulaires/_index", "PHP Formulaires" %}

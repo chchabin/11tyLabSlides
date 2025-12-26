@@ -19,7 +19,9 @@ draft: false
   }
 </style>
 
-# Cours ES6 (ECMAScript 2015) pour Développeurs PHP et C#
+## Cours ES6 (ECMAScript 2015) pour Développeurs PHP et C#
+
+---
 
 ## Introduction
 ES6, également appelé ECMAScript 2015, est une mise à jour majeure de JavaScript qui a introduit de nombreuses fonctionnalités modernes similaires à celles que vous connaissez en PHP et C#.
@@ -28,6 +30,8 @@ ES6, également appelé ECMAScript 2015, est une mise à jour majeure de JavaScr
 <section>
 
 ## 1. Let et Const
+
+---
 
 ### let
 - Portée de bloc (block scope). Similaire aux variables locales en C# et PHP
@@ -64,27 +68,76 @@ user.name = "Bob"; // OK - modification du contenu
 
 <section>
 
-## 2. Arrow Functions (Fonctions Flèches)
+## 2. Fonctions
+
+---
+
+###  Déclaration classique
+
+```javascript
+function saluer(nom) {
+    return "Bonjour " + nom;
+}
+
+// Paramètres par défaut
+function saluer(nom = "invité") {
+    return "Bonjour " + nom;
+}
+
+const result = saluer();
+// "Bonjour invité"
+```
+
+---
+
+### Expressions de fonction
+
+```javascript
+// Assignation à une variable
+const saluer = function(nom) {
+    return "Bonjour " + nom;
+};
+
+// Peut être anonyme ou nommée
+const calculer = function addition(a, b) {
+    return a + b;
+};
+```
+
+---
+
+###  Paramètres par Défaut
+
+```javascript
+function greet(name = "Invité", greeting = "Bonjour") {
+    return `${greeting}, ${name}!`;
+}
+
+console.log(greet()); // "Bonjour, Invité!"
+console.log(greet("Alice")); // "Bonjour, Alice!"
+console.log(greet("Bob", "Salut")); // "Salut, Bob!"
+```
+
+---
+
+### Arrow Functions (Fonctions Flèches)
 
 Syntaxe plus concise pour les fonctions avec comportement différent du `this`.
 
 ```javascript
-// Syntaxe classique
-function add(a, b) {
-    return a + b;
-}
-
-// Arrow function
-const add = (a, b) => a + b;
-
-// Avec un seul paramètre
-const double = x => x * 2;
-
-// Avec plusieurs lignes
-const complexFunction = (x, y) => {
-    const result = x + y;
-    return result * 2;
+// Syntaxe concise
+const saluer = (nom) => {
+    return "Bonjour " + nom;
 };
+
+// Syntaxe ultra-courte (return implicite)
+const saluer = nom => "Bonjour " + nom;
+
+// Plusieurs paramètres
+const additionner = (a, b) => a + b;
+
+// Sans paramètres
+const direBonjour = () => "Bonjour !";
 ```
 
 ---
@@ -108,8 +161,9 @@ const obj = {
 ---
 
 ## 3. Template Literals (Littéraux de Gabarit)
-
-Chaînes de caractères avec interpolation — similaire à `${}` en PHP ou `$""` en C#.
+<div class="size"> 
+Chaînes de caractères avec interpolation — similaire à <mark>${}</mark> en PHP ou <mark>$""</mark> en C#.
+</div>
 
 ```javascript
 const name = "Marie";
@@ -157,40 +211,57 @@ const { name: userName, age: userAge } = user;
 // Valeurs par défaut
 const { name, country = "France" } = user;
 ```
+</section>
 
 ---
 
-### Tableaux
+<section>
+
+## 5. Tableaux
+
+---
+
+### Création et opérations de base
 ```javascript
-const numbers = [1, 2, 3, 4, 5];
+// Création
+const nombres = [1, 2, 3, 4, 5];
+const mixte = [1, "texte", true, {nom: "Alice"}]; // Types mixtes OK
 
-const [first, second, ...rest] = numbers;
-console.log(first); // 1
-console.log(second); // 2
-console.log(rest); // [3, 4, 5]
+// Méthodes courantes
+nombres.push(6);           // Ajoute à la fin
+nombres.pop();             // Retire de la fin
+nombres.unshift(0);        // Ajoute au début
+nombres.shift();           // Retire du début
 
-// Ignorer des valeurs
-const [, , third] = numbers;
-console.log(third); // 3
+// Accès
+console.log(nombres[0]);   // Premier élément
+console.log(nombres.length); // Taille du tableau
+```
+---
+
+### Méthodes de transformation (importantes pour callbacks)
+
+```javascript
+const nombres = [1, 2, 3, 4, 5];
+
+// map : transforme chaque élément
+const doubles = nombres.map(n => n * 2);
+// [2, 4, 6, 8, 10]
+
+// filter : filtre les éléments
+const pairs = nombres.filter(n => n % 2 === 0);
+// [2, 4]
+
+// reduce : réduit à une seule valeur
+const somme = nombres.reduce((acc, n) => acc + n, 0);
+// 15
 ```
 
 </section>
 
 ---
 
-## 5. Paramètres par Défaut
 
-```javascript
-function greet(name = "Invité", greeting = "Bonjour") {
-    return `${greeting}, ${name}!`;
-}
-
-console.log(greet()); // "Bonjour, Invité!"
-console.log(greet("Alice")); // "Bonjour, Alice!"
-console.log(greet("Bob", "Salut")); // "Salut, Bob!"
-```
-
----
 <section>
 
 ## 6. Rest et Spread Operators
@@ -233,6 +304,8 @@ const merged = { ...obj1, ...obj2 }; // { a: 1, b: 2, c: 3, d: 4 }
 ## 7. Classes et Encapsulation
 
 Syntaxe orientée objet similaire à PHP et C#.
+
+---
 
 ### Classes de base
 ```javascript
@@ -369,6 +442,37 @@ console.log(student.getStudentInfo());
 
 **Concept fondamental en JavaScript — similaire aux délégués en C# ou aux callables en PHP**
 
+---
+### Architecture de l'Event Loop
+
+
+<pre>
+
+┌─────────────────────────┐
+│   Call Stack (Pile)     │  ← Code en cours d'exécution
+└─────────────────────────┘
+↓
+┌─────────────────────────┐
+│   Web APIs              │  ← setTimeout, fetch, DOM events
+└─────────────────────────┘
+↓
+┌─────────────────────────┐
+│   Callback Queue        │  ← Callbacks en attente
+└─────────────────────────┘
+↓
+┌─────────────────────────┐
+│   Event Loop            │  ← Vérifie si Call Stack est vide
+└─────────────────────────┘
+</pre>
+
+
+---
+
+### Définition
+Un callback est une fonction passée en argument à une autre fonction, qui sera exécutée plus tard.
+
+---
+
 ### Callbacks Simples
 ```javascript
 // Fonction qui accepte un callback
@@ -462,9 +566,28 @@ getUserData(userId)
 
 ---
 
+<section>
+
 ## 9. Promises
 
-Gestion asynchrone plus élégante - similaire à `Task` en C#.
+Gestion asynchrone plus élégante - similaire à <mark>Task</mark> en C#.
+
+---
+
+### Définition
+Une Promise est un objet représentant l'achèvement (ou l'échec) futur d'une opération asynchrone.
+
+---
+
+### Les 3 états d'une Promise
+1. Pending (En attente) → État initial, ni résolue ni rejetée
+2. Fulfilled (Résolue) → Opération terminée avec succès
+3. Rejected (Rejetée) → Opération échouée
+
+💡 Analogie : Une Promise est comme une commande au restaurant : elle est "en préparation", puis "servie" ou "annulée"
+
+---
+
 
 ```javascript
 const fetchData = () => {
@@ -494,9 +617,427 @@ fetchData()
 ```
 
 ---
-## 10. EventManager - Classe de Gestion d'Événements
+
+### async/await
+async/await est du sucre syntaxique qui rend le code asynchrone ressemblant à du code synchrone.
+
+---
+
+### Déclaration de fonction async
+```javascript
+// Fonction async retourne automatiquement une Promise
+async function chargerDonnees() {
+return "Données"; // Équivalent à Promise.resolve("Données")
+}
+
+// Utilisation
+chargerDonnees().then(console.log); // "Données"
+
+// Fonction fléchée async
+const chargerDonnees = async () => {
+return "Données";
+};
+```
+
+---
+
+### await : Attendre une Promise
+```javascript
+async function afficherUtilisateur() {
+    // await "attend" que la Promise soit résolue
+    const user = await chargerUtilisateur(1);
+    console.log("Utilisateur:", user.nom);
+    
+    // Le code s'exécute séquentiellement
+    const commandes = await chargerCommandes(user.id);
+    console.log("Commandes:", commandes.length);
+}
+
+afficherUtilisateur();
+```
+
+</section>
+
+---
+
+
+
+<section>
+
+## 10. DOM et Applications pratiques
+
+
+---
+
+### Qu'est-ce que le DOM ?
+Le DOM est une représentation en arbre de la structure HTML d'une page. JavaScript peut le manipuler pour modifier dynamiquement le contenu, la structure et le style.
+
+---
+
+### Structure du DOM
+<pre>
+document
+  └── html
+      ├── head
+      │   ├── title
+      │   └── meta
+      └── body
+          ├── div#container
+          │   ├── h1
+          │   └── p.description
+          └── ul
+              ├── li
+              └── li
+            </pre>
+---
+
+### Sélectionner des éléments
+Méthodes de sélection
+
+```javascript
+// Par ID (retourne un élément ou null)
+const element = document.getElementById('monId');
+
+// Par sélecteur CSS (premier élément trouvé)
+const element = document.querySelector('.ma-classe');
+const element = document.querySelector('#monId');
+const element = document.querySelector('div.container > p');
+
+// Par sélecteur CSS (tous les éléments)
+const elements = document.querySelectorAll('.ma-classe');
+const elements = document.querySelectorAll('li');
+
+// Anciennes méthodes (moins utilisées)
+const elements = document.getElementsByClassName('ma-classe');
+const elements = document.getElementsByTagName('div');
+```
+---
+#### Exemples pratiques
+```javascript
+// HTML: <div id="app"></div>
+const app = document.getElementById('app');
+
+// HTML: <button class="btn">Click</button>
+const button = document.querySelector('.btn');
+
+// HTML: <li>Item 1</li> <li>Item 2</li>
+const items = document.querySelectorAll('li');
+console.log(items.length); // 2
+
+// Parcourir une NodeList
+items.forEach(item => {
+console.log(item.textContent);
+});
+```
+---
+
+### Modifier le contenu
+```javascript
+const element = document.querySelector('#monElement');
+
+// textContent - texte brut (recommandé)
+element.textContent = "Nouveau texte";
+console.log(element.textContent);
+
+// innerHTML - HTML (attention XSS !)
+element.innerHTML = "<strong>Texte en gras</strong>";
+
+// innerText - texte visible (tient compte du CSS)
+element.innerText = "Texte visible";
+
+// value - pour les inputs
+const input = document.querySelector('input');
+input.value = "Valeur par défaut";
+console.log(input.value);
+```
+---
+
+### Sécurité : Attention à innerHTML
+```javascript
+// ❌ DANGEREUX avec des données utilisateur
+const userInput = "<img src=x onerror='alert(1)'>";
+element.innerHTML = userInput; // XSS possible !
+
+// ✅ SÉCURISÉ
+element.textContent = userInput; // Affiché comme texte
+```
+---
+
+### Modifier les attributs et styles
+
+---
+
+### Attributs HTML
+```javascript
+const link = document.querySelector('a');
+
+// Lire un attribut
+const href = link.getAttribute('href');
+
+// Modifier un attribut
+link.setAttribute('href', 'https://example.com');
+link.setAttribute('target', '_blank');
+
+// Supprimer un attribut
+link.removeAttribute('target');
+
+// Vérifier l'existence
+if (link.hasAttribute('href')) {
+console.log('Le lien a un href');
+}
+
+// Attributs directs
+const img = document.querySelector('img');
+img.src = 'nouvelle-image.jpg';
+img.alt = 'Description de l\'image';
+```
+---
+
+### Classes CSS
+```javascript
+const element = document.querySelector('.box');
+
+// Ajouter une classe
+element.classList.add('active');
+
+// Retirer une classe
+element.classList.remove('hidden');
+
+// Toggle (ajouter si absent, retirer si présent)
+element.classList.toggle('visible');
+
+// Vérifier une classe
+if (element.classList.contains('active')) {
+console.log('Element est actif');
+}
+
+// Remplacer une classe
+element.classList.replace('old-class', 'new-class');
+```
+---
+
+### Styles inline
+```javascript
+const box = document.querySelector('.box');
+
+// Modifier le style
+box.style.backgroundColor = 'blue';
+box.style.width = '200px';
+box.style.display = 'none';
+
+// Plusieurs styles
+Object.assign(box.style, {
+color: 'white',
+fontSize: '16px',
+padding: '20px'
+});
+```
+---
+
+### Créer des éléments
+```javascript
+// Créer un nouvel élément
+const div = document.createElement('div');
+div.textContent = 'Nouveau div';
+div.className = 'box';
+div.id = 'monDiv';
+
+// Créer et ajouter au DOM
+const container = document.querySelector('#container');
+container.appendChild(div); // Ajouter à la fin
+
+// Autres méthodes d'insertion
+container.prepend(div);     // Ajouter au début
+container.before(div);      // Avant l'élément
+container.after(div);       // Après l'élément
+
+// insertAdjacentElement
+container.insertAdjacentElement('beforeend', div);
+// Positions: 'beforebegin', 'afterbegin', 'beforeend', 'afterend'
+```
+---
+
+### Supprimer des éléments
+```javascript
+const element = document.querySelector('.to-remove');
+
+// Méthode moderne
+element.remove();
+
+// Méthode ancienne
+element.parentElement.removeChild(element);
+
+// Vider un conteneur
+const container = document.querySelector('#container');
+container.innerHTML = ''; // Supprime tout le contenu
+```
+---
+
+
+
+### Événements : addEventListener()
+```javascript
+const button = document.querySelector('button');
+
+// Écouter un événement
+button.addEventListener('click', function(event) {
+console.log('Bouton cliqué !');
+console.log(event); // Objet événement
+});
+
+// Avec fonction fléchée
+button.addEventListener('click', (e) => {
+console.log('Cliqué !');
+});
+```
+---
+
+### L'objet event
+```javascript
+button.addEventListener('click', (event) => {
+event.preventDefault();  // Empêcher l'action par défaut
+event.stopPropagation(); // Arrêter la propagation
+
+    console.log(event.target);      // Élément cliqué
+    console.log(event.currentTarget); // Élément avec le listener
+    console.log(event.type);        // Type d'événement ('click')
+});
+```
+---
+
+### Événements de formulaire
+
+---
+
+### Gérer la soumission
+```javascript
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+e.preventDefault(); // Empêcher le rechargement de la page
+
+    // Récupérer les valeurs
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    console.log(data);
+    // {nom: "Alice", email: "alice@example.com"}
+});
+```
+---
+
+### Validation en temps réel
+```javascript
+const emailInput = document.querySelector('#email');
+const errorSpan = document.querySelector('#emailError');
+
+emailInput.addEventListener('input', (e) => {
+const email = e.target.value;
+
+    if (!email.includes('@')) {
+        errorSpan.textContent = 'Email invalide';
+        errorSpan.style.color = 'red';
+    } else {
+        errorSpan.textContent = '';
+    }
+});
+```
+---
+
+### Délégation d'événements
+
+---
+
+### Problème : Éléments dynamiques
+```javascript
+// ❌ Ne fonctionne pas pour les éléments ajoutés après
+const buttons = document.querySelectorAll('.delete-btn');
+buttons.forEach(btn => {
+btn.addEventListener('click', () => {
+console.log('Supprimer');
+});
+});
+
+// Si on ajoute un nouveau bouton après, il n'aura pas de listener
+```
+---
+
+### ✅ Solution : Délégation d'événements
+```javascript
+// Écouter sur le parent
+const container = document.querySelector('#container');
+
+container.addEventListener('click', (e) => {
+// Vérifier si l'élément cliqué correspond
+if (e.target.classList.contains('delete-btn')) {
+console.log('Bouton supprimer cliqué');
+e.target.closest('.item').remove();
+}
+});
+```
+---
+
+### Charger et afficher des données avec fetch()
+```javascript
+async function afficherUtilisateurs() {
+const container = document.querySelector('#users');
+
+    // Afficher un loader
+    container.innerHTML = '<p>Chargement...</p>';
+    
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const users = await response.json();
+        
+        // Vider le container
+        container.innerHTML = '';
+        
+        // Créer les éléments
+        users.forEach(user => {
+            const div = document.createElement('div');
+            div.className = 'user-card';
+            div.innerHTML = `
+                <h3>${user.name}</h3>
+                <p>${user.email}</p>
+                <button data-id="${user.id}" class="details-btn">Détails</button>
+            `;
+            container.appendChild(div);
+        });
+    } catch (error) {
+        container.innerHTML = '<p class="error">Erreur de chargement</p>';
+    }
+}
+
+// Appeler au chargement de la page
+afficherUtilisateurs();
+```
+---
+
+### Gérer les clics avec les données
+```javascript
+// Délégation pour les boutons de détails
+document.querySelector('#users').addEventListener('click', async (e) => {
+if (e.target.classList.contains('details-btn')) {
+const userId = e.target.dataset.id;
+
+        try {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+            const user = await response.json();
+            
+            alert(`Détails: ${user.name} - ${user.phone}`);
+        } catch (error) {
+            alert('Erreur lors du chargement des détails');
+        }
+    }
+});
+```
+---
+
+### Création d'une classe d'événement
 
 **Similaire au pattern Observer en C# et PHP**
+
+---
 
 ### Classe EventManager Complète
 
@@ -593,7 +1134,11 @@ class EventManager {
         return Object.keys(this.#listeners);
     }
 }
+```
 
+---
+
+```javascript
 // Utilisation de base
 const eventManager = new EventManager();
 
@@ -613,751 +1158,68 @@ eventManager.once('appReady', () => {
     console.log('Application prête!');
 });
 ```
-
----
-<section>
-
-## 11. Architecture MVC et Gestion d'Événements
-
-### Pattern MVC en JavaScript
-
----
-### Model
-```javascript
-// MODEL - Gestion des données
-class TaskModel {
-    #tasks = [];
-    #eventManager;
-
-    constructor(eventManager) {
-        this.#eventManager = eventManager;
-    }
-
-    addTask(task) {
-        const newTask = {
-            id: Date.now(),
-            text: task,
-            completed: false,
-            createdAt: new Date()
-        };
-
-        this.#tasks.push(newTask);
-
-        // Émettre l'événement
-        this.#eventManager.emit(AppEventManager.EVENTS.TASK_ADDED, newTask);
-        this.#eventManager.emit(AppEventManager.EVENTS.TASK_UPDATED, this.#tasks);
-    }
-
-    removeTask(id) {
-        const task = this.#tasks.find(t => t.id === id);
-        if (!task) return;
-
-        this.#tasks = this.#tasks.filter(t => t.id !== id);
-
-        this.#eventManager.emit(AppEventManager.EVENTS.TASK_REMOVED, task);
-        this.#eventManager.emit(AppEventManager.EVENTS.TASK_UPDATED, this.#tasks);
-    }
-
-    toggleTask(id) {
-        const task = this.#tasks.find(t => t.id === id);
-        if (!task) return;
-
-        task.completed = !task.completed;
-
-        this.#eventManager.emit(AppEventManager.EVENTS.TASK_TOGGLED, task);
-        this.#eventManager.emit(AppEventManager.EVENTS.TASK_UPDATED, this.#tasks);
-    }
-
-    getTasks() {
-        return [...this.#tasks];
-    }
-
-    getStats() {
-        return {
-            total: this.#tasks.length,
-            completed: this.#tasks.filter(t => t.completed).length,
-            pending: this.#tasks.filter(t => !t.completed).length
-        };
-    }
-}
-```
----
-### Vue
-```javascript
-// VIEW - Interface utilisateur
-class TaskView {
-    #eventManager;
-    #domListener;
-
-    constructor(eventManager) {
-        this.#eventManager = eventManager;
-        this.#domListener = new DOMEventListener(eventManager);
-
-        this.taskList = document.getElementById('task-list');
-        this.taskInput = document.getElementById('task-input');
-        this.addButton = document.getElementById('add-button');
-        this.statsDisplay = document.getElementById('stats');
-        this.notification = document.getElementById('notification');
-
-        this.#bindDOMEvents();
-    }
-
-    #bindDOMEvents() {
-        // Bouton d'ajout
-        this.#domListener.listen(
-            this.addButton,
-            'click',
-            'view:addTask',
-            () => this.taskInput.value.trim()
-        );
-
-        // Touche Enter dans l'input
-        this.#domListener.attach(this.taskInput, 'keypress', (e) => {
-            if (e.key === 'Enter') {
-                const text = this.taskInput.value.trim();
-                if (text) {
-                    this.#eventManager.emit('view:addTask', text);
-                    this.taskInput.value = '';
-                }
-            }
-        });
-
-        // Délégation pour les boutons de suppression
-        this.#domListener.delegate(
-            this.taskList,
-            'click',
-            '.delete-btn',
-            function() {
-                const id = parseInt(this.closest('.task-item').dataset.id);
-                this.#eventManager.emit('view:deleteTask', id);
-            }.bind(this)
-        );
-
-        // Délégation pour les boutons toggle
-        this.#domListener.delegate(
-            this.taskList,
-            'click',
-            '.toggle-btn',
-            function() {
-                const id = parseInt(this.closest('.task-item').dataset.id);
-                this.#eventManager.emit('view:toggleTask', id);
-            }.bind(this)
-        );
-    }
-
-    render(tasks) {
-        this.taskList.innerHTML = tasks.map(task => ` div class="task-item ${task.completed ? 'completed' : ''}" data-id="${task.id}"> span class="task-text">${task.text} /span> div class="task-actions"> button class="toggle-btn">✓ /button> button class="delete-btn">✗ /button> /div> /div>
-        `).join('');
-    }
-
-    renderStats(stats) {
-        this.statsDisplay.innerHTML = ` div class="stats"> span>Total: ${stats.total} /span> span>Terminées: ${stats.completed} /span> span>En cours: ${stats.pending} /span> /div>
-        `;
-    }
-
-    showNotification(message, type = 'info') {
-        this.notification.textContent = message;
-        this.notification.className = `notification ${type}`;
-        this.notification.style.display = 'block';
-
-        setTimeout(() => {
-            this.notification.style.display = 'none';
-        }, 3000);
-    }
-
-    destroy() {
-        this.#domListener.destroy();
-    }
-}
-  ```
----
-### DOMEventListener
- ```javascript
-class DOMEventListener {
-    #eventManager;
-    #listeners = [];
-
-    constructor(eventManager) {
-        this.#eventManager = eventManager;
-    }
-
-    /**
-     * Attache un écouteur à un élément
-     * @param {HTMLElement} element - Élément DOM
-     * @param {string} eventType - Type d'événement (click, input, etc.)
-     * @param {Function} handler - Fonction de rappel
-     */
-    attach(element, eventType, handler) {
-        element.addEventListener(eventType, handler);
-        this.#listeners.push({ element, eventType, handler });
-    }
-
-    /**
-     * Délégation d'événements
-     * @param {HTMLElement} container - Conteneur parent
-     * @param {string} eventType - Type d'événement
-     * @param {string} selector - Sélecteur CSS
-     * @param {Function} callback - Fonction de rappel
-     */
-    delegate(container, eventType, selector, callback) {
-        const handler = (e) => {
-            const target = e.target.closest(selector);
-            if (target && container.contains(target)) {
-                callback.call(target, e);
-            }
-        };
-        
-        this.attach(container, eventType, handler);
-    }
-
-    /**
-     * Écoute un événement et émet via EventManager
-     * @param {HTMLElement} element - Élément DOM
-     * @param {string} domEvent - Événement DOM
-     * @param {string} appEvent - Nom de l'événement application
-     * @param {Function} dataExtractor - Fonction pour extraire les données
-     */
-    listen(element, domEvent, appEvent, dataExtractor = (e) => e) {
-        const handler = (e) => {
-            const data = dataExtractor(e);
-            this.#eventManager.emit(appEvent, data);
-        };
-        
-        this.attach(element, domEvent, handler);
-    }
-
-    /**
-     * Nettoie tous les écouteurs
-     */
-    destroy() {
-        this.#listeners.forEach(({ element, eventType, handler }) => {
-            element.removeEventListener(eventType, handler);
-        });
-        this.#listeners = [];
-    }
-}
- ```  
-
----
-### CONTROLLER
- ```javascript
-// CONTROLLER - Logique de contrôle
-class TaskController {
-    #model;
-    #view;
-    #eventManager;
-
-    constructor(model, view, eventManager) {
-        this.#model = model;
-        this.#view = view;
-        this.#eventManager = eventManager;
-
-        this.#bindModelEvents();
-        this.#bindViewEvents();
-        this.#initialize();
-    }
-
-    #bindModelEvents() {
-        // Écouter les événements du modèle
-        this.#eventManager.on(AppEventManager.EVENTS.TASK_ADDED, (task) => {
-            this.#view.showNotification(`Tâche ajoutée: ${task.text}`, 'success');
-        });
-
-        this.#eventManager.on(AppEventManager.EVENTS.TASK_REMOVED, (task) => {
-            this.#view.showNotification(`Tâche supprimée: ${task.text}`, 'info');
-        });
-
-        this.#eventManager.on(AppEventManager.EVENTS.TASK_TOGGLED, (task) => {
-            const status = task.completed ? 'terminée' : 'en cours';
-            this.#view.showNotification(`Tâche ${status}`, 'info');
-        });
-
-        this.#eventManager.on(AppEventManager.EVENTS.TASK_UPDATED, () => {
-            this.#updateView();
-        });
-
-        this.#eventManager.on(AppEventManager.EVENTS.ERROR, (error) => {
-            this.#view.showNotification(error.message, 'error');
-        });
-    }
-
-    #bindViewEvents() {
-        // Écouter les événements de la vue
-        this.#eventManager.on('view:addTask', (text) => {
-            this.#handleAddTask(text);
-        });
-
-        this.#eventManager.on('view:deleteTask', (id) => {
-            this.#handleDeleteTask(id);
-        });
-
-        this.#eventManager.on('view:toggleTask', (id) => {
-            this.#handleToggleTask(id);
-        });
-    }
-
-    #handleAddTask(text) {
-        try {
-            if (text.length < 3) {
-                throw new Error('La tâche doit contenir au moins 3 caractères');
-            }
-            this.#model.addTask(text);
-        } catch (error) {
-            this.#eventManager.emit(AppEventManager.EVENTS.ERROR, error);
-        }
-    }
-
-    #handleDeleteTask(id) {
-        this.#model.removeTask(id);
-    }
-
-    #handleToggleTask(id) {
-        this.#model.toggleTask(id);
-    }
-
-    #updateView() {
-        const tasks = this.#model.getTasks();
-        const stats = this.#model.getStats();
-
-        this.#view.render(tasks);
-        this.#view.renderStats(stats);
-    }
-
-    #initialize() {
-        this.#updateView();
-        this.#eventManager.emit(AppEventManager.EVENTS.TASKS_LOADED);
-    }
-}
-
-// INITIALISATION DE L'APPLICATION
-const eventManager = new AppEventManager();
-const taskModel = new TaskModel(eventManager);
-const taskView = new TaskView(eventManager);
-const taskController = new TaskController(taskModel, taskView, eventManager);
-
-// Écouter l'événement de chargement (exemple)
-eventManager.on(AppEventManager.EVENTS.TASKS_LOADED, () => {
-    console.log('Application de gestion de tâches chargée');
-});
-```
----
-
-### Capture d'Événements et Event Bubbling
-
-```javascript
-// Capture et Bubbling
-document.getElementById('parent').addEventListener('click', () => {
-    console.log('Parent cliqué');
-}, false); // false = bubbling (défaut)
-
-document.getElementById('child').addEventListener('click', () => {
-    console.log('Child cliqué');
-}, false);
-
-// Avec capture (useCapture = true)
-document.getElementById('parent').addEventListener('click', () => {
-    console.log('Parent capturé');
-}, true); // true = capture
-
-// Empêcher la propagation
-document.getElementById('child').addEventListener('click', (e) => {
-    e.stopPropagation(); // Arrête le bubbling
-    console.log('Child cliqué sans propagation');
-});
-
-// Empêcher l'action par défaut
-document.getElementById('link').addEventListener('click', (e) => {
-    e.preventDefault(); // Empêche la navigation
-    console.log('Navigation annulée');
-});
-```
----
-### Événements Personnalisés (Custom Events)
-
-```javascript
-// Créer un événement personnalisé
-class EventEmitter {
-    #events = {};
-
-    on(event, callback) {
-        if (!this.#events[event]) {
-            this.#events[event] = [];
-        }
-        this.#events[event].push(callback);
-    }
-
-    off(event, callback) {
-        if (this.#events[event]) {
-            this.#events[event] = this.#events[event].filter(cb => cb !== callback);
-        }
-    }
-
-    emit(event, data) {
-        if (this.#events[event]) {
-            this.#events[event].forEach(callback => callback(data));
-        }
-    }
-}
-
-// Utilisation
-class UserService extends EventEmitter {
-    login(username, password) {
-        // Logique de connexion...
-        this.emit('login', { username, timestamp: Date.now() });
-    }
-
-    logout() {
-        this.emit('logout', { timestamp: Date.now() });
-    }
-}
-
-const userService = new UserService();
-
-// Écouter les événements avec callbacks
-userService.on('login', (data) => {
-    console.log(`Utilisateur ${data.username} connecté à ${data.timestamp}`);
-});
-
-userService.on('logout', (data) => {
-    console.log(`Déconnexion à ${data.timestamp}`);
-});
-
-userService.login('alice', 'password123');
-```
----
-### Délégation d'Événements (Event Delegation)
-
-```javascript
-// Efficace pour les listes dynamiques
-document.getElementById('task-list').addEventListener('click', (e) => {
-    // Délégation : un seul listener pour tous les éléments
-    if (e.target.classList.contains('delete-btn')) {
-        const taskId = e.target.dataset.id;
-        deleteTask(taskId);
-    } else if (e.target.classList.contains('edit-btn')) {
-        const taskId = e.target.dataset.id;
-        editTask(taskId);
-    }
-});
-```
 </section>
 
 ---
+
+<section>
 
 ## 11. Modules
 
 Import et export de code entre fichiers — similaire aux namespaces en C# et aux namespaces en PHP.
+Les Modules ES (`.js` ou `.mjs`) sont la méthode standard pour organiser le code en fichiers réutilisables, offrant un véritable *scope* privé.
 
+---
+
+### api.js (Export)
 ```javascript
-// fichier: models/TaskModel.js
-export class TaskModel {
-    // ... code de la classe
+// Exportation nommée
+export const API_URL = '...';
+
+// Exportation par défaut
+export default class UserService {
+    // ... classe contenant la logique Fetch ...
 }
-
-// fichier: views/TaskView.js
-export class TaskView {
-    // ... code de la classe
-}
-
-// fichier: controllers/TaskController.js
-import { TaskModel } from '../models/TaskModel.js';
-import { TaskView } from '../views/TaskView.js';
-
-export class TaskController {
-    // ... code de la classe
-}
-
-// fichier: main.js
-import { TaskController } from './controllers/TaskController.js';
-import { TaskModel } from './models/TaskModel.js';
-import { TaskView } from './views/TaskView.js';
-
-const app = new TaskController(new TaskModel(), new TaskView());
 ```
 
 ---
-<section>
 
-## 12. Méthodes de Tableaux avec Callbacks
-
-### map()
-Transforme chaque élément d'un tableau.
-
+### main.js (Import)
 ```javascript
-const numbers = [1, 2, 3, 4];
-const doubled = numbers.map(n => n * 2); // [2, 4, 6, 8]
+// Importation nommée
+import { API_URL } from './api.js';
 
-// Avec index et tableau complet
-const withIndex = numbers.map((n, index, array) => {
-    return { value: n, index, total: array.length };
-});
+// Importation par défaut (nom au choix)
+import UserService from './api.js';
+
+// Nécessite dans le HTML
+<script type="module" src="main.js"></script>
 ```
 ---
-### filter()
-Filtre les éléments selon une condition.
 
-```javascript
-const numbers = [1, 2, 3, 4, 5, 6];
-const evens = numbers.filter(n => n % 2 === 0); // [2, 4, 6]
-```
+### Adapter le Modèle-Vue-Contrôleur
+Nous séparons les responsabilités en utilisant les classes et les modules ES pour créer trois couches distinctes :
+
 ---
-### reduce()
-Réduit un tableau à une seule valeur.
+<div class="size"> 
 
-```javascript
-const numbers = [1, 2, 3, 4];
-const sum = numbers.reduce((acc, n) => acc + n, 0); // 10
+| Composant                   | Rôle Principal                                                | Implémentation JS                          |
+|-----------------------------|---------------------------------------------------------------|--------------------------------------------|
+| **Modèle (Model)**          | Gère les données (CRUD via Fetch). Source de vérité.          | **Classes POO**                            |
+| **Vue (View)**              | Gère l'affichage (DOM) et les interactions utilisateur.       | **DOM** / `Event Listeners`                |
+| **Contrôleur (Controller)** | Fait le lien, gère les flux d'événements et les mises à jour. | Fonction d'initialisation et **Callbacks** |
 
-// Exemple complexe : grouper par propriété
-const users = [
-    { name: "Alice", role: "admin" },
-    { name: "Bob", role: "user" },
-    { name: "Charlie", role: "admin" }
-];
+</div>
 
-const byRole = users.reduce((acc, user) => {
-    if (!acc[user.role]) {
-        acc[user.role] = [];
-    }
-    acc[user.role].push(user);
-    return acc;
-}, {});
-// { admin: [...], user: [...] }
-```
----
-### find() et findIndex()
-```javascript
-const users = [
-    { id: 1, name: "Alice" },
-    { id: 2, name: "Bob" }
-];
 
-const user = users.find(u => u.id === 2); // { id: 2, name: "Bob" }
-const index = users.findIndex(u => u.id === 2); // 1
-```
----
-### some() et every()
-```javascript
-const numbers = [1, 2, 3, 4, 5];
 
-const hasEven = numbers.some(n => n % 2 === 0); // true
-const allPositive = numbers.every(n => n > 0); // true
-```
 </section>
 
 ---
 
-## 13. Exemple Complet : Application MVC avec Événements
-
-```javascript
-// app.js - Application complète de gestion de produits
-
-// MODEL
-class ProductModel {
-    #products = [];
-    #callbacks = { change: [], add: [], remove: [] };
-
-    addProduct(name, price) {
-        const product = {
-            id: Date.now(),
-            name,
-            price: parseFloat(price),
-            quantity: 1
-        };
-        this.#products.push(product);
-        this.#trigger('add', product);
-        this.#trigger('change', this.#products);
-    }
-
-    removeProduct(id) {
-        const removed = this.#products.find(p => p.id === id);
-        this.#products = this.#products.filter(p => p.id !== id);
-        this.#trigger('remove', removed);
-        this.#trigger('change', this.#products);
-    }
-
-    updateQuantity(id, quantity) {
-        const product = this.#products.find(p => p.id === id);
-        if (product) {
-            product.quantity = quantity;
-            this.#trigger('change', this.#products);
-        }
-    }
-
-    getProducts() {
-        return [...this.#products];
-    }
-
-    getTotal() {
-        return this.#products.reduce((sum, p) => sum + (p.price * p.quantity), 0);
-    }
-
-    // Système d'événements avec callbacks
-    on(event, callback) {
-        if (this.#callbacks[event]) {
-            this.#callbacks[event].push(callback);
-        }
-    }
-
-    #trigger(event, data) {
-        if (this.#callbacks[event]) {
-            this.#callbacks[event].forEach(callback => callback(data));
-        }
-    }
-}
-
-// VIEW
-class ProductView {
-    constructor() {
-        this.productList = document.getElementById('product-list');
-        this.totalDisplay = document.getElementById('total');
-        this.nameInput = document.getElementById('product-name');
-        this.priceInput = document.getElementById('product-price');
-        this.addButton = document.getElementById('add-product');
-    }
-
-    render(products, total) {
-        // Rendu de la liste
-        this.productList.innerHTML = products.map(product => `
-            <div class="product-item" data-id="${product.id}">
-                <span>${product.name} - ${product.price}€</span>
-                <input type="number" value="${product.quantity}" 
-                       class="quantity-input" min="1">
-                <button class="remove-btn">Supprimer</button>
-            </div>
-        `).join('');
-
-        // Affichage du total
-        this.totalDisplay.textContent = `Total: ${total.toFixed(2)}€`;
-    }
-
-    bindAddProduct(handler) {
-        const addProduct = () => {
-            const name = this.nameInput.value.trim();
-            const price = this.priceInput.value;
-            if (name && price) {
-                handler(name, price);
-                this.nameInput.value = '';
-                this.priceInput.value = '';
-            }
-        };
-
-        this.addButton.addEventListener('click', addProduct);
-        this.priceInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') addProduct();
-        });
-    }
-
-    bindRemoveProduct(handler) {
-        this.productList.addEventListener('click', (e) => {
-            if (e.target.classList.contains('remove-btn')) {
-                const id = parseInt(e.target.closest('.product-item').dataset.id);
-                handler(id);
-            }
-        });
-    }
-
-    bindUpdateQuantity(handler) {
-        this.productList.addEventListener('change', (e) => {
-            if (e.target.classList.contains('quantity-input')) {
-                const id = parseInt(e.target.closest('.product-item').dataset.id);
-                const quantity = parseInt(e.target.value);
-                handler(id, quantity);
-            }
-        });
-    }
-}
-
-// CONTROLLER
-class ProductController {
-    constructor(model, view) {
-        this.model = model;
-        this.view = view;
-
-        // Callbacks pour les événements de la vue
-        this.view.bindAddProduct(this.handleAddProduct.bind(this));
-        this.view.bindRemoveProduct(this.handleRemoveProduct.bind(this));
-        this.view.bindUpdateQuantity(this.handleUpdateQuantity.bind(this));
-
-        // Callbacks pour les événements du modèle
-        this.model.on('change', this.onProductsChanged.bind(this));
-        this.model.on('add', this.onProductAdded.bind(this));
-        this.model.on('remove', this.onProductRemoved.bind(this));
-
-        // Rendu initial
-        this.updateView();
-    }
-
-    handleAddProduct(name, price) {
-        this.model.addProduct(name, price);
-    }
-
-    handleRemoveProduct(id) {
-        if (confirm('Supprimer ce produit ?')) {
-            this.model.removeProduct(id);
-        }
-    }
-
-    handleUpdateQuantity(id, quantity) {
-        this.model.updateQuantity(id, quantity);
-    }
-
-    onProductsChanged(products) {
-        this.updateView();
-    }
-
-    onProductAdded(product) {
-        console.log('Produit ajouté:', product);
-        this.showNotification(`${product.name} ajouté au panier`);
-    }
-
-    onProductRemoved(product) {
-        console.log('Produit supprimé:', product);
-        this.showNotification(`${product.name} supprimé du panier`);
-    }
-
-    updateView() {
-        const products = this.model.getProducts();
-        const total = this.model.getTotal();
-        this.view.render(products, total);
-    }
-
-    showNotification(message) {
-        // Notification simple
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        setTimeout(() => notification.remove(), 3000);
-    }
-}
-
-// Initialisation
-const app = new ProductController(
-    new ProductModel(),
-    new ProductView()
-);
-```
-
----
-
-## Exercices Pratiques
-
-### Exercice 1 : Classe avec Propriétés Privées
-Créer une classe `User` avec des propriétés privées `#email` et `#password`, et des méthodes publiques pour la validation.
-
-### Exercice 2 : MVC Simple
-Créer une application de compteur avec architecture MVC et gestion d'événements.
-
-### Exercice 3 : Callbacks et Promises
-Convertir une fonction utilisant des callbacks en fonction retournant une Promise.
-
-### Exercice 4 : Event Delegation
-Implémenter une liste de tâches avec délégation d'événements pour optimiser les performances.
-
----
-
 ## Bonnes Pratiques pour Développeurs PHP/C#
+
+<div class="size">
 
 1. **Utilisez des propriétés privées (`#`)** comme en C# et PHP
 2. **Préférez les callbacks nommés** pour la lisibilité
@@ -1367,9 +1229,13 @@ Implémenter une liste de tâches avec délégation d'événements pour optimise
 6. **Organisez votre code en modules** (un fichier par classe)
 7. **Documentez vos callbacks** avec JSDoc (similaire à PHPDoc)
 
+</div>
+
 ---
 
 ## Comparaison avec PHP et C#
+
+<div class="size">
 
 | Concept          | JavaScript ES6     | C#                      | PHP              |
 |------------------|--------------------|-------------------------|------------------|
@@ -1378,6 +1244,8 @@ Implémenter une liste de tâches avec délégation d'événements pour optimise
 | Promise          | `Promise`          | `Task`                  | Promise (8.0+)   |
 | Événement        | `addEventListener` | `event` / `delegate`    | Observer pattern |
 | Classe           | `class MyClass`    | `class MyClass`         | `class MyClass`  |
+
+</div>
 
 ---
 
