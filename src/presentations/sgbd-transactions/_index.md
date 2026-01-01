@@ -21,6 +21,11 @@ draft: false
 # Les transactions
 
 ---
+<section>
+
+## Introduction
+
+---
 
 ## Définition
 
@@ -52,6 +57,7 @@ Elles sont exécutées manuellement, elles encapsulent des processus.
 3. FIN
    - Correcte : Validation des modifications
    - Incorrecte : Annulation des modifications
+</section>
 
 ---
 
@@ -89,7 +95,7 @@ END
 
 
 ---
-## Types de Triggers
+## Moments d'exécution
 
 <mark>Before Triggers</mark> : S'exécutent avant que l'opération (INSERT, UPDATE, DELETE) ne soit réalisée sur la table.
  > Utilisés pour valider ou modifier les données avant qu'elles ne soient enregistrées dans la base de données.
@@ -103,19 +109,6 @@ END
 
 <mark>Instead Of Triggers</mark> (uniquement sur certaines bases de données comme SQL Server) : Remplacent l'opération (INSERT, UPDATE, DELETE) standard par une opération définie dans le trigger.
 >Utilisés généralement sur des vues pour gérer des opérations qui ne sont pas normalement possibles.
-
----
-
-## Cas d'Utilisation des Triggers
-<div class="size">
-<mark>Audit</mark> : Enregistrer automatiquement des logs pour les modifications apportées aux tables (historique des modifications).
-
-<mark>Validation des données</mark> : Empêcher l'insertion ou la mise à jour de données incorrectes.
-
-<mark>Automatisation</mark> : Mise à jour automatique d'une autre table en cas de modification (par exemple, mise à jour d'un stock lors d'une vente).
-
-<mark>Sécurité</mark> : Restreindre ou surveiller l'accès à certaines données sensibles.
-</div>
 
 ---
 
@@ -137,70 +130,80 @@ END
 
 ---
 
-## Bonnes Pratiques
-- Utiliser les triggers avec modération pour éviter de compliquer la logique de la base de données.
-- Documenter les triggers pour faciliter leur compréhension et leur maintenance.
-- Tester rigoureusement les triggers pour s'assurer qu'ils ne provoquent pas de comportements indésirables.
+## Comparaison MySQL vs SQL Server
+
+<div class="size">      
+
+| Aspect                       | MySQL                          | SQL Server                  |
+|------------------------------|--------------------------------|-----------------------------|
+| **Timing**                   | BEFORE, AFTER                  | AFTER, INSTEAD OF           |
+| **Granularité**              | FOR EACH ROW (ligne par ligne) | Par lot (toutes les lignes) |
+| **Accès aux données**        | OLD, NEW                       | DELETED, INSERTED           |
+| **Nombre par événement**     | 1 seul                         | Multiples possibles         |
+| **Modification des valeurs** | Possible avec BEFORE           | Non (utiliser INSTEAD OF)   |
+| **Support des vues**         | INSTEAD OF uniquement          | INSTEAD OF complet          |
+</div>
 
 ---
 
-
-
-## Remarques
-
-<mark>Deleted</mark> définit la table d'origine (c'est old en mysql)
-
->le triggers sur INSERT ne peuvent pas faire référence à <mark>Deleted</mark>
-
-<mark>Inserted</mark> définit la table modifiée (c'est new en mysql)
-
->le triggers sur DELETE ne peuvent pas faire référence à <mark>Inserted</mark>
+## Bonnes pratiques
 
 ---
 
-## Les Variables locales
+### Pour les deux systèmes
 
-Elles sont déclarées après DECLARE avec leur nom, leur type, et
-éventuellement leur valeur par défaut :
-
-DECLARE @MaVariable1 INT DEFAULT 1;
-
----
-
-## Les Variables de session
-Les variables ne sont stockées en mémoire que pour la durée de la session.
-
-### Avec sql server
-- SET @var = 'toto';
-- SET @'ma var' = 3;
-- SET @var = 3 + 1;
-
+1. **Documentation** : Commentez vos triggers pour expliquer leur logique
+2. **Performance** : Évitez les opérations coûteuses dans les triggers
+3. **Simplicité** : Gardez les triggers simples et maintenables
+4. **Éviter les boucles** : Attention aux triggers qui se déclenchent mutuellement
+5. **Gestion d'erreurs** : Implémentez une gestion robuste des erreurs
+6. **Tests** : Testez tous les scénarios possibles
 
 ---
 
-## Avec Mysql
+### Quand utiliser les triggers
 
-- SET @var := 'toto';
-- SET @'ma var' := 3;
-- SET @var := 3 + 1;
-
-- SELECT attr FROM ... WHERE ... INTO @var;
-- SELECT @var := attr, ... FROM ... WHERE ...;
-
-Attention l'affectation se fait sur := et non pas sur =, qui teste une égalité booléenne. La
-variable stockée est réutilisable partout dans les requêtes (SELECT @var;).
+✅ **Utilisez les triggers pour :**
+- Maintenir l'intégrité référentielle complexe
+- Créer des journaux d'audit automatiques
+- Calculer des valeurs dérivées
+- Synchroniser des données entre tables
 
 ---
 
-## Blocs de contrôle
-
-- IF test THEN ...;
-- ELSE ...;
-- END IF;
+❌ **Évitez les triggers pour :**
+- La logique métier complexe (privilégiez les procédures stockées)
+- Les traitements longs qui ralentissent les transactions
+- Les opérations qui peuvent être gérées au niveau applicatif
 
 ---
 
-## Exemple
+## Limitations et précautions
+
+---
+
+### MySQL
+- Pas de support natif des triggers BEFORE sur les vues
+- Performance impactée sur les imports en masse
+- Difficulté de débogage
+
+---
+
+### SQL Server
+- Les triggers ne peuvent pas retourner de résultats
+- Attention à l'ordre d'exécution avec plusieurs triggers
+- Impact sur les performances lors de transactions volumineuses
+
+---
+
+## Conclusion
+
+Les triggers sont des outils puissants pour automatiser certaines tâches au niveau de la base de données. MySQL et SQL Server offrent des fonctionnalités similaires avec quelques différences dans leur implémentation. Le choix entre les deux dépend de vos besoins spécifiques et de l'environnement de votre projet.
+
+
+---
+
+## Exemple MYSQL
 ```sql
 -- Création du trigger d'insertion
 CREATE TRIGGER trg_AfterInsertCommandes
@@ -220,7 +223,7 @@ END;
 
 ---
 
-## Exemple
+## Exemple MYSQL
 
 ```sql
 -- Trigger pour empêcher la suppression de lignes avec un statut "Actif"
@@ -239,7 +242,7 @@ GO
 
 ---
 
-## Exemple
+## Exemple SqlServer
 <div class="size">
 
 ```sql
@@ -267,7 +270,7 @@ GO
 
 ---
 
-## Exemple
+## Exemple SqlServer
 <div class="size">
 
 ```sql
@@ -470,13 +473,22 @@ PRINT @NomTrouve;
 
 ---
 
-## Le cas des variables locales
+## Le cas des variables locales (MYSQL)
+
+Elles sont déclarées après <mark>DECLARE</mark> avec leur nom, leur type, et éventuellement leur valeur par défaut, au début du bloc <mark>BEGIN/END</mark> :
+```sql
+DECLARE @MaVariable1 INT DEFAULT 1;
+```
+Elles sont typées et leur portée est limitée au bloc où elles sont déclarées.
+
 
 ---
 
-Dans MySQL, les variables locales doivent être déclarées avec DECLARE au début du bloc BEGIN/END. Elles sont typées et leur portée est limitée au bloc où elles sont déclarées.
 
-MySQL supporte aussi les variables utilisateur avec le préfixe @. Elles persistent pendant toute la session et n'ont pas besoin d'être déclarées.
+## Les Variables de session
+Les variables ne sont stockées en mémoire que pour la durée de la session.
+
+MySQL supporte aussi les variables utilisateur avec le préfixe <mark>@</mark>. Elles persistent pendant toute la session et n'ont pas besoin d'être déclarées.
 
 ---
 

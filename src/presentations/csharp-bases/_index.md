@@ -329,7 +329,7 @@ CalculerPrix(int , double )
 est la signature de la fonction
 
 ---
-## On peut aussi la presenter sous forme de tableau
+### On peut aussi la presenter sous forme de tableau
 <div class="size" >
 
 | Nom          | Rôle                                                                                                                  | Paramètres                                                                                                | Valeur de retour                         |
