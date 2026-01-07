@@ -132,7 +132,9 @@ public class EnsembleTableau : Ensemble
 ---
 
 <div class="size">
-<img src="/images/heritage/abstract.png" alt="abstract" >
+
+[abstract]({{"/images/heritage/abstract.png" | url }})
+
 </div>
 
 ---

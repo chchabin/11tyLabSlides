@@ -121,7 +121,7 @@ Console.WriteLine(c.ToString());
 
 
 Ne retourne pas les informations du compte rémunéré :  
-![]({{"/images/heritage/override01.png" | url }})
+![override01]({{"/images/heritage/override01.png" | url }})
 
 ---
 
@@ -232,7 +232,8 @@ ConsoleWriteLine(c2.ToString());
 </div>
 
 On obtient :  
-<img src="/images/heritage/methodevirtuelle.png" alt="methodevirtuelle" >  
+ 
+![methodevirtuelle]({{"/images/heritage/methodevirtuelle.png" | url }})
 
 Le compte a été crédité : c’est la méthode de l’objet statique qui a été exécutée !!
 
@@ -271,7 +272,8 @@ base.crediter(montant);
 ---
 
 3. Le résultat est celui escompté :
-   <img src="/images/heritage/methodevirtuelle2.png" alt="methodevirtuelle2" >
+
+   ![methodevirtuelle2]({{"/images/heritage/methodevirtuelle2.png" | url }})
 
 Comme le montant créditer est supérieur à 1000 pour le compte rémunéré, l'opération n'a pas lieu.
 </section>
@@ -285,7 +287,8 @@ Comme le montant créditer est supérieur à 1000 pour le compte rémunéré, l'
 
 ## 1/2
 
-<img src="/images/heritage/diagramme.png" alt="diagramme" >
+
+![diagramme]({{"/images/heritage/diagramme.png" | url }})
 
 ---
 

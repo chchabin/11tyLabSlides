@@ -137,7 +137,9 @@ public class Employe:IEmploye
 
 
 <div class="size">
-<img src="/images/heritage/EmployeDiag.png" alt="abstract" >
+
+![EmployeDiag]({{"/images/heritage/EmployeDiag.png" | url }})
+
 </div>
 
 ---
@@ -166,7 +168,9 @@ Console.WriteLine(etudiant.AfficherDetails());
 Le résultat est identique :
 
 <div class="size">
-<img src="/images/heritage/interfaceConsole.png" alt="interfaceConsole" >
+
+![interfaceConsole]({{"/images/heritage/interfaceConsole.png" | url }})
+
 </div>
 
 ---

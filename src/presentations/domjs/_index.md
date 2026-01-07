@@ -41,7 +41,8 @@ de manipuler le contenu de la page, sa structure et ses styles.
 
 ### Window
 <div class="size">
-<img src="/images/js/window_document.webp" alt="window_document.webp" >
+
+[window_document]({{"/images/js/window_document.webp" | url }})
 </div>
 
 ### Document

@@ -48,7 +48,7 @@ Source Linux : Is Not UniX).
 
 ---
 
-<img src="/images/php/3tiers.png" alt="3tiers" >
+![3tiers]({{"/images/php/3tiers.png" | url }})
 
 ---
 
@@ -78,7 +78,7 @@ inséré dans le fichier html grâce à la balise (ou TAG) :
 `<?php Liste d’instructions ?>`  
 Exemple :  
 
-<img src="/images/php/transformation.png" alt="transformation" >
+[transformation]({{"/images/php/transformation.png" | url }})
 
 ---
 
@@ -88,7 +88,7 @@ Exemple :
 
 Soit la page nommée `index.php`:
 
-<img src="/images/php/3tiersExemple.png" alt="3tiersExemple" >
+[3tiersExemple]({{"/images/php/3tiersExemple.png" | url }})
 
 On remarque que les balises PHP qui existent sur la page d’origine
 (coté serveur) ont disparu au côté client => confidentialité du code PHP 
@@ -293,7 +293,7 @@ include("fichier.php");
 
 ---
 
-<img src="/images/php/include.png" alt="include" >
+[include]({{"/images/php/include.png" | url }})
 
 ---
 

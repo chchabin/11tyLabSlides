@@ -49,7 +49,7 @@ Dans la balise d’ouverture du formulaire, on précise :
 
 La saisie dans le formulaire (exemple pour le nom)
 
-<img src="/images/php/textbox.png" alt="include" >
+[textbox]({{"/images/php/textbox.png" | url }})
 
 ```html
 <label for="nom">Nom:</label>
