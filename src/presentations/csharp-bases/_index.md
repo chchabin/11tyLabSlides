@@ -19,7 +19,87 @@ draft: false
   }
 </style>
 
-# C# Aide mémoire
+# C# Pour démarrer
+
+---
+
+<section>
+
+## La classe console
+
+---
+
+Toutes les instructions de console proviennent de la classe statique :
+
+```csharp
+using System;
+```
+
+La classe `Console` permet :
+- d'afficher du texte
+- de lire des entrées utilisateur
+- de gérer les couleurs
+- de contrôler le curseur
+- de manipuler la fenêtre console
+
+---
+## 2. Afficher du texte
+
+<mark>Console.WriteLine()</mark> : 
+Affiche un texte **avec retour à la ligne**.
+
+```csharp
+string nom = "Alice";
+Console.WriteLine(nom);
+```
+
+<mark>Console.Write()</mark> :
+Affiche un texte **sans retour à la ligne**.
+
+```csharp
+Console.Write("Bonjour ");
+Console.Write("Alice");
+```
+
+---
+
+
+## 3. Lire une entrée utilisateur
+
+<mark>Console.ReadLine()</mark>
+
+Lit une ligne saisie par l'utilisateur (retourne une `string`).
+
+```csharp
+Console.Write("Votre nom : ");
+string nom = Console.ReadLine();
+Console.WriteLine($"Bonjour {nom}");
+```
+
+⚠️ <mark>Toujours convertir les types numériques.</mark>
+
+---
+
+### 3.1 Conversion de type
+
+```csharp
+Console.Write("Votre âge : ");
+int age = Convert.ToInt32(Console.ReadLine());
+```
+
+---
+
+## 4. Lecture de touches
+
+<mark>Console.ReadKey()</mark>
+
+Attend l'appui d'une touche.
+
+```csharp
+Console.ReadKey();
+```
+
+</section>
 
 ---
 
@@ -102,7 +182,7 @@ i--; // i -= 1; // i = i – 1;
 
 ---
 
-### Concatenation
+### Concaténation
 
 ```csharp
 string a = "Coucou,";
@@ -142,7 +222,7 @@ string d = $"Vous avez entré : {a}{b}";//Interpolation de chaine $
 
 ---
 
-### L’instruction `if`
+### L’instruction conditionnelle -`if`
 
 ```csharp
 string a ="";
@@ -161,7 +241,7 @@ Console.WriteLine(a);
 
 ---
 
-### L’instruction `switch`
+### L’instruction conditionnelle -`switch`
 ```csharp
 //Saisie de la variable country
 string a ="";
@@ -246,6 +326,24 @@ while (i < fin) {-
  }
 Console.WriteLine("La somme vaut :" + somme);
 ```
+
+---
+
+### La boucle foreach
+```csharp
+string[] paysEuropeens = {
+            "France",
+            "Allemagne",
+            "Italie",
+            "Espagne",
+            "Belgique"
+        };
+
+        foreach (string pays in paysEuropeens)
+        {
+            Console.WriteLine(pays);
+        }
+```
 </section>
 
 ---
@@ -256,58 +354,95 @@ Console.WriteLine("La somme vaut :" + somme);
 
 ---
 
-### Composition des fonctions
+### 1. Qu’est-ce qu’une fonction (méthode) ?
 
-<div class="size" >
+Une fonction est un **bloc de code réutilisable** qui :
+- porte un nom
+- peut recevoir des paramètres
+- peut retourner une valeur
+- évite la duplication de code
 
-[modificateur] <mark>type_retour</mark> nom_fonction([paramètres])
-{
-    // Corps de la fonction
-<mark>return</mark> valeur;
-}
-
-</div>
+En C#, une fonction est appelée une **méthode** et appartient toujours à une **classe**.
 
 ---
 
-<mark>Modificateur d'accès :</mark> public, private, protected, internal (détermine qui peut appeler la fonction)
-<mark>Type de retour :</mark> le type de données retourné (int, string, bool, void si aucun retour)
-<mark>Nom :</mark> identifie la fonction (convention PascalCase : CalculerTotal, AfficherMessage)
-<mark>Paramètres :</mark> variables d'entrée entre parenthèses (optionnels)
-<mark>Corps :</mark> le code à exécuter entre accolades
+### 2. Syntaxe de base
 
----
-### Exemple
 ```csharp
-class Program
+typeRetour NomDeLaMethode(parametres)
 {
-// Définition de la fonction
-public static int CalculerPrix(int quantite, double prixUnitaire)
-{
-    return (int)(quantite * prixUnitaire);
+    // instructions
+    return valeur;
 }
+```
 
-    // Point d'entrée du programme
-    static void Main()
-    {
-        // Appel de la fonction
-        int prix = CalculerPrix(3, 12.50);
-        Console.WriteLine($"Prix total : {prix}€");
-    }
+Exemple simple :
+
+```csharp
+static int Addition(int a, int b)
+{
+    return a + b;
+}
+```
+
+---
+
+## 3. Appeler une fonction
+
+```csharp
+int resultat = Addition(3, 5);
+Console.WriteLine(resultat);
+```
+---
+
+### 4. Fonctions sans valeur de retour (`void`)
+
+```csharp
+static void DireBonjour(string nom)
+{
+    Console.WriteLine($"Bonjour {nom}");
+}
+```
+
+---
+
+### 5. Paramètres
+
+Paramètres simples
+
+```csharp
+static int Carre(int x)
+{
+    return x * x;
+}
+```
+
+
+
+Paramètres optionnels
+
+```csharp
+static void AfficherMessage(string message = "Hello")
+{
+    Console.WriteLine(message);
 }
 ```
 ---
 
-### Signature de fonction
+### 6. Signature de fonction
 
 L’utilisateur d’une fonction n’a pas à connaitre le programme de la fonction ; seule la signature de la fonction le concerne.
+```csharp
+Addition(int , int )
+```
+est la signature de la fonction
 
  ---
 ### Les composants
 
 1. Le nom de la fonction : Son identifiant.
 
-2. Le nombre de paramètres : Combien de valeurs elle reçoit.
+2. Le nombre de paramètres : Combien de valeurs, elle reçoit.
 
 3. Le type des paramètres : Si c'est un int, un string, etc.
 
@@ -321,14 +456,6 @@ L’utilisateur d’une fonction n’a pas à connaitre le programme de la fonct
 C'est une erreur classique de débutant : le type de retour (ce que la fonction renvoie) et les noms des paramètres ne font généralement pas partie de la signature pour le compilateur.
 
 ---
-
-### Exemple
-```csharp
-CalculerPrix(int , double )
-```
-est la signature de la fonction
-
----
 ### On peut aussi la presenter sous forme de tableau
 <div class="size" >
 
@@ -337,6 +464,35 @@ est la signature de la fonction
 | CalculerPrix | Calcule le montant total d'une commande en multipliant la quantité par le prix, puis convertit le résultat en entier. | <mark>int quantite :</mark> Le nombre d'articles<br/><mark>double prixUnitaire :</mark> Le prix à l'unité | <mark>int :</mark> Le prix total arrondi |
 
 </div>
+
+---
+## 7. Retour multiple avec `out`
+
+```csharp
+static void Calcul(int a, int b, out int somme, out int produit)
+{
+    somme = a + b;
+    produit = a * b;
+}
+```
+---
+
+## 8. Méthodes courtes (expression-bodied)
+
+```csharp
+static int Carre(int x) => x * x;
+```
+
+---
+
+## 9. Fonctions lambda (aperçu)
+
+```csharp
+Func<int, int> carre = x => x * x;
+```
+
+
+
 </section>
 
 ---
