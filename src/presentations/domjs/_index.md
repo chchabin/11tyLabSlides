@@ -42,7 +42,7 @@ de manipuler le contenu de la page, sa structure et ses styles.
 ### Window
 <div class="size">
 
-[window_document]({{"/images/js/window_document.webp" | url }})
+![window_document]({{"/images/js/window_document.webp" | url }})
 </div>
 
 ### Document

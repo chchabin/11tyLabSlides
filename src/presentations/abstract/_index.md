@@ -131,11 +131,7 @@ public class EnsembleTableau : Ensemble
 
 ---
 
-<div class="size">
-
-[abstract]({{"/images/heritage/abstract.png" | url }})
-
-</div>
+![abstract]({{"/images/heritage/abstract.png" | url }})
 
 ---
 

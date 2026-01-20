@@ -78,7 +78,7 @@ inséré dans le fichier html grâce à la balise (ou TAG) :
 `<?php Liste d’instructions ?>`  
 Exemple :  
 
-[transformation]({{"/images/php/transformation.png" | url }})
+![transformation]({{"/images/php/transformation.png" | url }})
 
 ---
 
@@ -88,7 +88,7 @@ Exemple :
 
 Soit la page nommée `index.php`:
 
-[3tiersExemple]({{"/images/php/3tiersExemple.png" | url }})
+![3tiersExemple]({{"/images/php/3tiersExemple.png" | url }})
 
 On remarque que les balises PHP qui existent sur la page d’origine
 (coté serveur) ont disparu au côté client => confidentialité du code PHP 
@@ -293,7 +293,7 @@ include("fichier.php");
 
 ---
 
-[include]({{"/images/php/include.png" | url }})
+![include]({{"/images/php/include.png" | url }})
 
 ---
 
