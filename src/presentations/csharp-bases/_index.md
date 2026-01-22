@@ -127,6 +127,20 @@ Console.ReadKey();
 
 ---
 
+### Utiliser les types
+Coder
+```csharp
+decimal prixUnitaire=1.52m;
+Console.WriteLine($"Le prix du produit est de {prixUnitaire}€");
+```
+Afficher
+```texte
+Le prix du produit est de 1,52 €
+```
+
+
+---
+
 ### LES CARACTÈRES SPÉCIAUX
 
 | type | Description                                                |
@@ -142,9 +156,9 @@ Console.ReadKey();
 
 **Exemple d’utilisation :**
 ```csharp
-int a = 10;
+int a = 3;
 
-int b = 20;
+int b = 2;
 
 int c = a + b; // c = 5
 
@@ -189,6 +203,9 @@ string a = "Coucou,";
 string b = " c’est moi !";
 string c ="Vous avez entré : " + a + b;//Classique
  //c contient "Vous avez entré : Coucou, c’est moi !"
+``` 
+La syntaxe moderne !
+```csharp
 string d = $"Vous avez entré : {a}{b}";//Interpolation de chaine $                          
 ```
 
