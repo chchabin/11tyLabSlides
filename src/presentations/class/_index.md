@@ -20,12 +20,12 @@ draft: false
 
 ---
 
+<section>
+
 ## La dette technique
 ![dettetech]({{"/images/class/dettetech.png" | url }})
 
 ---
-
-<section>
 
 Un projet de développement logiciel inclut souvent une conception logicielle, formalisée ou non.
 L’écriture du code, si elle suit les bonnes pratiques, assure la cohérence du projet et facilite sa maintenance :
