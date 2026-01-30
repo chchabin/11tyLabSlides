@@ -38,7 +38,7 @@ sous forme :
 
 ---
 
-## DRY “don’t repeat yourself”
+### DRY “don’t repeat yourself”
 Ce principe est d’éviter au maximum les répétitions d’informations dans un programme.
 Chaque élément de connaissance ou de logique d’un programme doit avoir une représentation unique et non ambiguë.
 
@@ -56,23 +56,7 @@ Objet : des informations & des actions
 
 ---
 
-## Exemple :
-Modélisons l’ensemble des produits en stock, nous aurions :
-
-| 🛈 **Informations** 🛈 | 🎬 **Actions** 🎬  |
-|------------------------|--------------------|
-| Libellé, prix, stock   | Ajouter, supprimer |
-
----
-
-## DÉFINITION : un objet
-Il se compose d'informations et d'actions. Les actions utilisent (et parfois modifient) les informations de l'objet.
--	L'ensemble des informations d'un objet donné est appelé son ➡️ état ⬅️.
--	L'ensemble des actions applicables à un objet représente son ➡️ comportement ⬅️.
-
----
-
-## Exemple
+### Exemple
 
 ```texte
 objet R21_de_mon_chef
@@ -85,68 +69,21 @@ objet R21_de_mon_chef
 fin objet
 ```
 
-</section>
+---
+
+### DÉFINITION : un objet
+Il se compose d'informations et d'actions. Les actions utilisent (et parfois modifient) les informations de l'objet.
+-	L'ensemble des informations d'un objet donné est appelé son ➡️ état ⬅️.
+-	L'ensemble des actions applicables à un objet représente son ➡️ comportement ⬅️.
 
 ---
 
-<section>
+### Exemple :
+Modélisons l’ensemble des produits en stock, nous aurions :
 
-## Programmation orientée objet vs Programmation procédurale
----
-
-### Programmation procédurale (ancienne approche)
-On sépare les données (variables) et les fonctions qui les manipulent :
-
-```csharp
-// Données
-string marqueBmw = "BMW";
-int vitesseBmw = 0;
-string couleurBmw = "Noire";
-
-string marqueFerrari = "Ferrari";
-int vitesseFerrari = 0;
-string couleurFerrari = "Rouge";
-
-// Fonctions séparées
-void Accelerer(string marque, int vitesse)
-{
-    vitesse += 10;
-    Console.WriteLine($"La {marque} accélère. Vitesse : {vitesse}");
-}
-
-// Problèmes : difficile à maintenir, code répétitif, erreurs faciles
-```
-
----
-
-### Programmation orientée objet (approche moderne)
-On groupe les données et les fonctions dans une classe. Chaque objet gère ses propres données :
-
-```csharp
-public class Voiture
-{
-    public string Marque;
-    private int Vitesse;
-    
-    public void Accelerer()
-    {
-        Vitesse += 10;
-        Console.WriteLine($"La {Marque} accélère. Vitesse : {Vitesse}");
-    }
-}
-
-
-```
----
-
-#### Utilisation simple et organisée
-```csharp
-Voiture bmw = new Voiture("BMW", "Noire");
-Voiture ferrari = new Voiture("Ferrari", "Rouge");
-
-bmw.Accelerer();      // Chaque objet gère ses propres données
-ferrari.Accelerer();
-```
+| 🛈 **Informations** 🛈 | 🎬 **Actions** 🎬  |
+|------------------------|--------------------|
+| Libellé, prix, stock   | Ajouter, supprimer |
 
 </section>
 
@@ -341,6 +278,70 @@ Console.WriteLine(voiture1.ObtenirVitesse());  // Affiche : 10
 </section>
 
 ---
+<section>
+
+## Programmation orientée objet vs Programmation procédurale
+
+---
+
+### Programmation procédurale (ancienne approche)
+On sépare les données (variables) et les fonctions qui les manipulent :
+
+```csharp
+// Données
+string marqueBmw = "BMW";
+int vitesseBmw = 0;
+string couleurBmw = "Noire";
+
+string marqueFerrari = "Ferrari";
+int vitesseFerrari = 0;
+string couleurFerrari = "Rouge";
+
+// Fonctions séparées
+void Accelerer(string marque, int vitesse)
+{
+    vitesse += 10;
+    Console.WriteLine($"La {marque} accélère. Vitesse : {vitesse}");
+}
+
+// Problèmes : difficile à maintenir, code répétitif, erreurs faciles
+```
+
+---
+
+### Programmation orientée objet (approche moderne)
+On groupe les données et les fonctions dans une classe. Chaque objet gère ses propres données :
+
+```csharp
+public class Voiture
+{
+    public string Marque;
+    private int Vitesse;
+    
+    public void Accelerer()
+    {
+        Vitesse += 10;
+        Console.WriteLine($"La {Marque} accélère. Vitesse : {Vitesse}");
+    }
+}
+
+
+```
+---
+
+#### Utilisation simple et organisée
+```csharp
+Voiture bmw = new Voiture("BMW", "Noire");
+Voiture ferrari = new Voiture("Ferrari", "Rouge");
+
+bmw.Accelerer();      // Chaque objet gère ses propres données
+ferrari.Accelerer();
+```
+
+</section>
+
+---
+
 
 # ↩️
 
