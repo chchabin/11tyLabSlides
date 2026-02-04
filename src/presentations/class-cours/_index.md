@@ -111,9 +111,9 @@ Les attributs sont les caractéristiques d'une classe. Ce sont les données qu'e
 public class Voiture
 {
     // Attributs
-    public string Marque;
-    public string Couleur;
-    public int Vitesse;
+    public string marque;
+    private string couleur;
+    private int vitesse;
 }
 ```
 
@@ -132,9 +132,9 @@ Un attribut private ne peut être accédé que depuis l'intérieur de la classe.
 ```csharp
 public class Voiture
 {
-    public string Marque;        // Accessible de partout
-    private int Vitesse;          // Accessible seulement dans la classe
-    private string NuméroSérie;   // Privé aussi
+    public string marque;        // Accessible de partout
+    private int vitesse;          // Accessible seulement dans la classe
+    private string numéroSérie;   // Privé aussi
 }
 ```
 ---
@@ -143,16 +143,16 @@ Un constructeur est une méthode spéciale qui s'exécute automatiquement quand 
 ```csharp
 public class Voiture
 {
-    public string Marque;
-    public string Couleur;
-    private int Vitesse;
+    public string marque;
+    public string couleur;
+    private int vitesse;
 
     // Constructeur
     public Voiture(string marque, string couleur)
     {
-        Marque = marque;
-        Couleur = couleur;
-        Vitesse = 0;  // Vitesse initiale à 0
+        this.marque = marque;
+        this.couleur = couleur;
+        this.vitesse = 0;  // Vitesse initiale à 0
     }
 }
 ```
@@ -169,21 +169,21 @@ Une méthode est une fonction qui appartient à la classe. Elle effectue une act
 // Méthode sans retour (void)
 public void Accelerer()
 {
-    Vitesse += 10;
-    Console.WriteLine("Accélération !");
+    vitesse += 10;
+    Console.WriteLine($"Accélération !");
 }
 
 // Méthode avec retour
 public int ObtenirVitesse()
 {
-    return Vitesse;
+    return vitesse;
 }
 
 // Méthode avec paramètres
-public void ChangerCouleur(string nouvelleCouleur)
+public string ChangerCouleur(string nouvelleCouleur)
 {
     Couleur = nouvelleCouleur;
-    Console.WriteLine($"Couleur changée en {Couleur}");
+    return $"Couleur changée en {Couleur}";
 }
 ```
 
@@ -217,23 +217,23 @@ Maintenant <mark>maVoiture</mark> est un objet avec <mark>Marque = "Tesla"</mark
 public class Voiture
 {
     // Attributs
-    public string Marque;
-    private string Couleur;
-    private int Vitesse;
+    public string marque;
+    private string couleur;
+    private int vitesse;
 
     // Constructeur
     public Voiture(string marque, string couleur)
     {
-        Marque = marque;
-        Couleur = couleur;
-        Vitesse = 0;
+        this.marque = marque;
+        couleur = couleur;
+        this.itesse = 0;
     }
 
     // Méthode pour accélérer (publique)
-    public void Accelerer()
+    public string Accelerer()
     {
         Vitesse += 10;
-        Console.WriteLine($"La {Marque} accélère. Vitesse : {Vitesse} km/h");
+        return $"La {Marque} accélère. Vitesse : {Vitesse} km/h";
     }
 
     // Méthode pour obtenir la vitesse (publique)
@@ -258,7 +258,7 @@ Console.WriteLine(voiture1.Marque);   // Affiche : BMW
 
 
 // Appel de méthodes
-voiture1.Accelerer();                 // Affiche : La BMW accélère. Vitesse : 10 km/h
+Console.WriteLine(voiture1.Accelerer());       // Affiche : La BMW accélère. Vitesse : 10 km/h
 Console.WriteLine(voiture1.ObtenirVitesse());  // Affiche : 10
 
 // Essayer d'accéder à un attribut privé génère une erreur
@@ -298,10 +298,10 @@ int vitesseFerrari = 0;
 string couleurFerrari = "Rouge";
 
 // Fonctions séparées
-void Accelerer(string marque, int vitesse)
+string Accelerer(string marque, int vitesse)
 {
     vitesse += 10;
-    Console.WriteLine($"La {marque} accélère. Vitesse : {vitesse}");
+    return $"La {marque} accélère. Vitesse : {vitesse}";
 }
 
 // Problèmes : difficile à maintenir, code répétitif, erreurs faciles
@@ -315,13 +315,13 @@ On groupe les données et les fonctions dans une classe. Chaque objet gère ses 
 ```csharp
 public class Voiture
 {
-    public string Marque;
-    private int Vitesse;
+    public string marque;
+    private int vitesse;
     
-    public void Accelerer()
+    public string Accelerer()
     {
         Vitesse += 10;
-        Console.WriteLine($"La {Marque} accélère. Vitesse : {Vitesse}");
+        return $"La {marque} accélère. Vitesse : {vitesse}";
     }
 }
 
@@ -334,8 +334,8 @@ public class Voiture
 Voiture bmw = new Voiture("BMW", "Noire");
 Voiture ferrari = new Voiture("Ferrari", "Rouge");
 
-bmw.Accelerer();      // Chaque objet gère ses propres données
-ferrari.Accelerer();
+Console.WriteLine(bmw.Accelerer());      // Chaque objet gère ses propres données
+Console.WriteLine(ferrari.Accelerer());
 ```
 
 </section>
