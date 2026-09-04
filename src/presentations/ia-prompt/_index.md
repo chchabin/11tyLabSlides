@@ -301,3 +301,9 @@ Sans jargon excessif. En français. Maximum 5 lignes par entrée.
 3. **Choisir le bon modèle** selon la RAM disponible et le cas d'usage
 4. **Itérer** — commencer simple, affiner progressivement
 
+---
+
+# ↩️
+
+#### [Start over]({{ "/index" | url }})
+
