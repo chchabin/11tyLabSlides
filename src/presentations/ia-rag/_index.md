@@ -22,7 +22,7 @@ draft: false
 }
 </style>
 
-# Cours : RAG Local avec Ollama, LangChain et LangGraph
+# Cours : RAG Local avec Ollama, LangChain et LangGraph, Faiss, Streamlit
 
 ---
 
@@ -45,6 +45,7 @@ draft: false
 ### Qu'est-ce que le RAG ?
 
 Le **Retrieval-Augmented Generation (RAG)** est une architecture qui combine :
+
 - La **recherche d'information** (retrieval) dans une base documentaire
 - La **génération de texte** par un modèle de langage (LLM)
 

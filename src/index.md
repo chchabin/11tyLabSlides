@@ -38,6 +38,7 @@ draft: false
 - {% link "/presentations/formulaires/_index", "PHP Formulaires" %}
 - {% link "/presentations/javascript-cours/_index", "Javascript cours" %}
 - {% link "/presentations/ia-rag/_index", "RAG" %}
+- {% link "/presentations/ia-prompt/_index", "Prompt" %}
 
 ---
 

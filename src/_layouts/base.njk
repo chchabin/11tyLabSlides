@@ -12,22 +12,20 @@
 <script src="{{ '/reveal.js/plugin/markdown/markdown.js' | url }}"></script>
 <script src="{{ '/reveal.js/plugin/highlight/highlight.js' | url }}"></script>
 <script src="{{ '/reveal.js/plugin/notes/notes.js' | url }}"></script>
-<!-- CDN externe - pas de changement nécessaire -->
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<!-- Plugin Mermaid pour reveal.js (mermaid est inclus dans ce bundle) -->
+<script src="{{ '/reveal.js/plugin/mermaid/mermaid.js' | url }}"></script>
 <script>
-    // Configuration simple
-    mermaid.initialize({
-        startOnLoad: true,
-        theme: 'dark'
-    });
-
-    // Initialisation Reveal.js simple
+    // Le plugin rend chaque <div class="mermaid"> via mermaid.render(),
+    // ce qui fonctionne même pour les diagrammes sur des slides masquées.
     Reveal.initialize({
         controls: true,
         progress: true,
         center: true,
         hash: true,
-        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        mermaid: {
+            theme: 'dark'
+        },
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid ]
     });
 </script>
 </body>
