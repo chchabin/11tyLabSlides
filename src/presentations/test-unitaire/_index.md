@@ -131,7 +131,7 @@ Par exemple lorsque l’on définit un cas d’utilisation, on définit les test
 
 <div class="font12">
 
-![RED-GREEN-REFACTO cycle]({{"/images/test-unitaire/RED-GREEN-REFACTO-cycle.png" | url }}
+![RED-GREEN-REFACTO cycle]({{"/images/test-unitaire/RED-GREEN-REFACTO-cycle.png" | url }})
 <mark> RED</mark> : On commence par écrire un test et on vérifie que ce dernier échoue (car le code n’est pas implémenté). Ce test spécifie le comportement d’une méthode (ce qu’elle doit renvoyer, ce qu’elle doit appeler, …).  
 <mark>GREEN</mark> : On écrit le code minimum pour que le test passe au vert.  
 <mark>REFACTOR</mark> : On améliore le code sans changer son comportement.
